@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Priyanshu Raj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="container nav">
+        <a class="brand" href="index.html">Priyanshu Raj</a>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="false">
+            <span class="toggle-track">
+              <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
+              <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
+              <span class="toggle-knob" aria-hidden="true"></span>
+            </span>
+          </button>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section container page-section about-layout">
+        <div class="portrait-wrap reveal">
+          <img
+            class="portrait"
+            src="assets/portrait.svg"
+            alt="Portrait of Priyanshu Raj"
+          />
+        </div>
+
+        <div class="about-columns">
+          <article class="about-card reveal">
+            <h1>About Priyanshu Raj</h1>
+            <p>
+              I build practical and visually polished applications with a strong
+              focus on performance, usability, and maintainable architecture.
+            </p>
+            <p>
+              I enjoy solving real-world problems through web development,
+              machine learning, and product-driven thinking. I’m also deeply
+              interested in Web3.0 applications and decentralized product
+              experiences that improve trust, ownership, and transparency.
+            </p>
+          </article>
+
+          <aside class="education-card reveal" aria-label="Education">
+            <h2>Education</h2>
+            <div class="education-item">
+              <h3>BS in Data Science</h3>
+              <p><a class="inline-link" href="https://www.iitm.ac.in/" target="_blank" rel="noopener noreferrer">IIT Madras</a></p>
+              <span>Expected Completion: 2027</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Priyanshu Raj. All rights reserved.</p>
+        <div class="footer-contact-links" aria-label="Footer contact links">
+          <a href="mailto:priyanshuanubis33@gmail.com" aria-label="Gmail Priyanshu Raj">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+            <span>Gmail</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/priyanshu-raj-05633831b"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Priyanshu Raj LinkedIn profile"
+          >
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/priyanshuanubis"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Priyanshu Raj GitHub profile"
+          >
+            <i class="bi bi-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

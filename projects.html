@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Priyanshu Raj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="container nav">
+        <a class="brand" href="index.html">Priyanshu Raj</a>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="false">
+            <span class="toggle-track">
+              <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
+              <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
+              <span class="toggle-knob" aria-hidden="true"></span>
+            </span>
+          </button>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section container page-section">
+        <h1>Featured Projects</h1>
+        <p class="section-note">
+          Easy edit tip: update each card title/description/link below. Keep
+          placeholders with <code>#</code> until your project URL is ready.
+        </p>
+
+        <div class="project-grid">
+          <!-- PROJECT CARD: Vehicle Parking App -->
+          <article class="project-card reveal">
+            <h3>Vehicle Parking App</h3>
+            <p>
+              A parking management application for streamlining slot tracking,
+              vehicle entry/exit handling, and operational efficiency.
+            </p>
+            <a
+              class="project-link"
+              href="https://github.com/priyanshuanubis/Vehicle-Parking-App"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Project ↗</a
+            >
+          </article>
+
+          <!-- PROJECT CARD: Personal Portfolio -->
+          <article class="project-card reveal">
+            <h3>Personal Portfolio</h3>
+            <p>
+              This portfolio website featuring a sleek minimal interface,
+              project showcase, skills, and direct contact channels.
+            </p>
+            <a class="project-link" href="index.html">View Homepage ↗</a>
+          </article>
+
+          <!-- PSEUDO PROJECT CARD: Replace # with real links later -->
+          <article class="project-card upcoming-projects is-hidden" aria-hidden="true">
+            <h3>Upcoming Projects</h3>
+            <p>
+              Use these placeholder links for future projects and replace the
+              <code>#</code> values when your repositories or live demos are ready.
+            </p>
+            <div class="pseudo-links">
+              <a class="project-link pseudo-link" href="#"># Project Link 01</a>
+              <a class="project-link pseudo-link" href="#"># Project Link 02</a>
+              <a class="project-link pseudo-link" href="#"># Project Link 03</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Priyanshu Raj. All rights reserved.</p>
+        <div class="footer-contact-links" aria-label="Footer contact links">
+          <a href="mailto:priyanshuanubis33@gmail.com" aria-label="Gmail Priyanshu Raj">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+            <span>Gmail</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/priyanshu-raj-05633831b"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Priyanshu Raj LinkedIn profile"
+          >
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/priyanshuanubis"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Priyanshu Raj GitHub profile"
+          >
+            <i class="bi bi-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
