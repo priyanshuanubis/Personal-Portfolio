@@ -367,7 +367,7 @@ h2 {
 }
 
 .skills-page {
-  max-width: 920px;
+  max-width: 900px;
 }
 
 .skills-header {
@@ -381,28 +381,6 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 800;
-}
-
-.skills-intro {
-  margin: 0 auto;
-  color: var(--muted);
-}
-
-.skills-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
-.skills-page .skill-card h2 {
-  font-size: 0.95rem;
-}
-
-.skills-page .skill-card p {
-  margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.5;
-  color: var(--muted);
 }
 
 .contact-list {
