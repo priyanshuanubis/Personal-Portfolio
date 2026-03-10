@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills | Priyanshu Raj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="container nav">
+        <a class="brand" href="index.html">Priyanshu Raj</a>
+        <div class="nav-actions">
+          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="false">
+            <span class="toggle-track">
+              <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
+              <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
+              <span class="toggle-knob" aria-hidden="true"></span>
+            </span>
+          </button>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html" class="active">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section container page-section skills-page">
+        <div class="skills-header">
+          <p class="eyebrow">Technical Expertise</p>
+          <h1 class="skills-heading">Skills</h1>
+          <p class="skills-intro">
+            A focused stack across software development, machine learning, deep
+            learning, and data analysis.
+          </p>
+        </div>
+
+        <div class="skills-cards" aria-label="Skill categories">
+          <article class="skill-card">
+            <h2>Programming</h2>
+            <p>Python · SQL · JavaScript</p>
+          </article>
+
+          <article class="skill-card">
+            <h2>ML Algorithms</h2>
+            <p>
+              Linear/Logistic Regression · SVM · KNN · Random Forest · AdaBoost
+              · Naive Bayes
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <h2>Deep Learning</h2>
+            <p>CNN · RNN · LSTM · GRU · TensorFlow/Keras</p>
+          </article>
+
+          <article class="skill-card">
+            <h2>Frameworks &amp; Tools</h2>
+            <p>Flask · SQLAlchemy · Scikit-learn · Streamlit · Git</p>
+          </article>
+
+          <article class="skill-card">
+            <h2>Data Processing</h2>
+            <p>Pandas · NumPy · Matplotlib · Seaborn · Normalization</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Priyanshu Raj. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
