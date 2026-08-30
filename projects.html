@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -20,9 +20,9 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="container nav">
-        <a class="brand" href="index.html">Priyanshu Raj</a>
+        <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="false">
+          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -43,17 +43,24 @@
 
     <main id="main-content">
       <section class="section container page-section">
-        <h1>Featured Projects</h1>
+        <h1>Featured <span class="gradient-text">Projects</span></h1>
         <p class="section-note">
           A showcase of real-world software, AI models, cloud deployment pipelines, and computer vision systems built with clean architecture and scalable code.
         </p>
 
-        <!-- Category Filter Tabs -->
-        <div class="project-filters" aria-label="Project filter categories">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="ai-cv">AI &amp; Computer Vision</button>
-          <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
-          <button class="filter-btn" data-filter="systems-web">Systems &amp; Web</button>
+        <!-- Project Toolbar: Search & Filter -->
+        <div class="project-toolbar">
+          <div class="search-wrap">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, description, or tech stack..." aria-label="Search projects" />
+          </div>
+
+          <div class="project-filters" aria-label="Project filter categories">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ai-cv">AI &amp; Computer Vision</button>
+            <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
+            <button class="filter-btn" data-filter="systems-web">Systems &amp; Web</button>
+          </div>
         </div>
 
         <div class="project-grid">

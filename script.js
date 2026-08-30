@@ -30,7 +30,7 @@ const applyTheme = (theme) => {
   }
 };
 
-applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+applyTheme(savedTheme || (prefersDark ? "dark" : "dark")); // Default to dark for premium aesthetic
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
@@ -59,7 +59,7 @@ updateProgress();
 const backToTop = document.createElement("button");
 backToTop.className = "back-to-top";
 backToTop.setAttribute("aria-label", "Back to top");
-backToTop.textContent = "↑";
+backToTop.innerHTML = "↑";
 document.body.appendChild(backToTop);
 
 const toggleBackToTop = () => {
@@ -74,7 +74,7 @@ backToTop.addEventListener("click", () => {
 
 // Reveal-on-scroll for cards/sections
 const revealTargets = document.querySelectorAll(
-  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap"
+  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap, .highlight-card"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal"));
@@ -97,9 +97,9 @@ if ("IntersectionObserver" in window) {
   revealTargets.forEach((el) => el.classList.add("in"));
 }
 
-
 // Quick theme shortcut: press "T" to toggle theme
 window.addEventListener("keydown", (event) => {
+  if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") return;
   if (event.key.toLowerCase() === "t" && !event.metaKey && !event.ctrlKey) {
     const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
     const next = current === "dark" ? "light" : "dark";
@@ -118,7 +118,7 @@ document.body.appendChild(toast);
 const showToast = (message) => {
   toast.textContent = message;
   toast.classList.add("show");
-  window.setTimeout(() => toast.classList.remove("show"), 1400);
+  window.setTimeout(() => toast.classList.remove("show"), 1600);
 };
 
 document.querySelectorAll(".copy-btn").forEach((btn) => {
@@ -126,33 +126,55 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
     const value = btn.getAttribute("data-copy") || "";
     try {
       await navigator.clipboard.writeText(value);
-      showToast("Copied successfully");
+      showToast("Copied to clipboard!");
     } catch {
       showToast("Unable to copy");
     }
   });
 });
 
-// Project Category Filtering
+// Interactive Project Filter & Keyword Search
 const filterBtns = document.querySelectorAll(".filter-btn");
+const searchInput = document.getElementById("project-search");
 const projectCards = document.querySelectorAll(".project-card[data-category]");
 
-if (filterBtns.length > 0 && projectCards.length > 0) {
+let activeFilter = "all";
+let searchQuery = "";
+
+const filterProjects = () => {
+  if (projectCards.length === 0) return;
+  projectCards.forEach((card) => {
+    const category = card.getAttribute("data-category") || "";
+    const titleText = card.querySelector("h3") ? card.querySelector("h3").textContent.toLowerCase() : "";
+    const descText = card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "";
+    const tagText = card.querySelector(".tech-tags") ? card.querySelector(".tech-tags").textContent.toLowerCase() : "";
+    const combinedText = `${titleText} ${descText} ${tagText}`;
+
+    const matchesCategory = activeFilter === "all" || category === activeFilter;
+    const matchesSearch = searchQuery === "" || combinedText.includes(searchQuery);
+
+    if (matchesCategory && matchesSearch) {
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  });
+};
+
+if (filterBtns.length > 0) {
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-
-      const filter = btn.getAttribute("data-filter");
-      projectCards.forEach((card) => {
-        const category = card.getAttribute("data-category");
-        if (filter === "all" || category === filter) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
-      });
+      activeFilter = btn.getAttribute("data-filter") || "all";
+      filterProjects();
     });
   });
 }
 
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    filterProjects();
+  });
+}
