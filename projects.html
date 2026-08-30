@@ -45,49 +45,155 @@
       <section class="section container page-section">
         <h1>Featured Projects</h1>
         <p class="section-note">
-          Easy edit tip: update each card title/description/link below. Keep
-          placeholders with <code>#</code> until your project URL is ready.
+          A showcase of real-world software, AI models, cloud deployment pipelines, and computer vision systems built with clean architecture and scalable code.
         </p>
 
+        <!-- Category Filter Tabs -->
+        <div class="project-filters" aria-label="Project filter categories">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai-cv">AI &amp; Computer Vision</button>
+          <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
+          <button class="filter-btn" data-filter="systems-web">Systems &amp; Web</button>
+        </div>
+
         <div class="project-grid">
-          <!-- PROJECT CARD: Vehicle Parking App -->
-          <article class="project-card reveal">
+          <!-- 1. Automated CI/CD Pipeline -->
+          <article class="project-card reveal" data-category="devops">
+            <h3>Automated CI/CD Deployment Pipeline</h3>
+            <p>
+              Automated CI/CD deployment pipeline connecting GitHub, Jenkins, and AWS cloud infrastructure for rapid, reliable software deployment.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">AWS</span>
+              <span class="tag-pill">Jenkins</span>
+              <span class="tag-pill">GitHub Actions</span>
+              <span class="tag-pill">DevOps</span>
+              <span class="tag-pill">Shell</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 2. HandGuardCV -->
+          <article class="project-card reveal" data-category="ai-cv">
+            <h3>HandGuardCV</h3>
+            <p>
+              Real-time virtual boundary protection and workspace perimeter safety system engineered using classical computer vision algorithms in Python &amp; OpenCV.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">OpenCV</span>
+              <span class="tag-pill">Computer Vision</span>
+              <span class="tag-pill">NumPy</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/HandGuardCV" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 3. Traffic Sign Recognition Benchmark -->
+          <article class="project-card reveal" data-category="ai-cv">
+            <h3>Traffic Sign Recognition Benchmark</h3>
+            <p>
+              German Traffic Sign Recognition Benchmark (GTSRB) classification pipeline evaluating PyTorch Deep CNNs against HOG feature extractions and SVM baselines.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">PyTorch</span>
+              <span class="tag-pill">CNN</span>
+              <span class="tag-pill">OpenCV</span>
+              <span class="tag-pill">HOG + SVM</span>
+              <span class="tag-pill">Python</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 4. Distributed Log Monitoring System -->
+          <article class="project-card reveal" data-category="systems-web">
+            <h3>Distributed Log Monitoring System</h3>
+            <p>
+              Distributed system architecture for real-time log generation, secure remote transfer, centralized log aggregation, and automated incident alerting.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Node.js</span>
+              <span class="tag-pill">Bash</span>
+              <span class="tag-pill">System Logging</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/log-monitoring-system" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 5. Lightweight Multi-Modal Driver Distraction Detection -->
+          <article class="project-card reveal" data-category="ai-cv">
+            <h3>Driver Distraction Detection System</h3>
+            <p>
+              Lightweight, multi-modal neural network architecture designed for real-time driver monitoring and distraction detection under edge constraints.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">PyTorch</span>
+              <span class="tag-pill">Deep Learning</span>
+              <span class="tag-pill">Computer Vision</span>
+              <span class="tag-pill">Multi-Modal</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/Lightweight-Multi-Modal-Driver-Distraction-Detection-System" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 6. Placement Portal App -->
+          <article class="project-card reveal" data-category="systems-web">
+            <h3>Placement Portal App</h3>
+            <p>
+              Full-stack campus placement management application featuring role-based authentication, student tracking, company job postings, and REST APIs.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Vue.js</span>
+              <span class="tag-pill">Python Flask</span>
+              <span class="tag-pill">SQLite</span>
+              <span class="tag-pill">REST APIs</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/Placement-Portal-App" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 7. Pneumonia Detection CNN -->
+          <article class="project-card reveal" data-category="ai-cv">
+            <h3>Pneumonia Detection CNN</h3>
+            <p>
+              Convolutional Neural Network model trained for automated diagnosis and binary classification of pneumonia from chest X-ray medical imaging.
+            </p>
+            <div class="tech-tags">
+              <span class="tag-pill">TensorFlow</span>
+              <span class="tag-pill">Keras</span>
+              <span class="tag-pill">CNN</span>
+              <span class="tag-pill">Medical Imaging</span>
+            </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/pneumonia-detection-cnn" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <!-- 8. Vehicle Parking App -->
+          <article class="project-card reveal" data-category="systems-web">
             <h3>Vehicle Parking App</h3>
             <p>
-              A parking management application for streamlining slot tracking,
-              vehicle entry/exit handling, and operational efficiency.
+              A parking management application streamlining slot tracking, vehicle entry/exit handling, real-time status updates, and operational analytics.
             </p>
-            <a
-              class="project-link"
-              href="https://github.com/priyanshuanubis/Vehicle-Parking-App"
-              target="_blank"
-              rel="noopener noreferrer"
-              >View Project ↗</a
-            >
-          </article>
-
-          <!-- PROJECT CARD: Personal Portfolio -->
-          <article class="project-card reveal">
-            <h3>Personal Portfolio</h3>
-            <p>
-              This portfolio website featuring a sleek minimal interface,
-              project showcase, skills, and direct contact channels.
-            </p>
-            <a class="project-link" href="index.html">View Homepage ↗</a>
-          </article>
-
-          <!-- PSEUDO PROJECT CARD: Replace # with real links later -->
-          <article class="project-card upcoming-projects is-hidden" aria-hidden="true">
-            <h3>Upcoming Projects</h3>
-            <p>
-              Use these placeholder links for future projects and replace the
-              <code>#</code> values when your repositories or live demos are ready.
-            </p>
-            <div class="pseudo-links">
-              <a class="project-link pseudo-link" href="#"># Project Link 01</a>
-              <a class="project-link pseudo-link" href="#"># Project Link 02</a>
-              <a class="project-link pseudo-link" href="#"># Project Link 03</a>
+            <div class="tech-tags">
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">Flask</span>
+              <span class="tag-pill">SQLite</span>
+              <span class="tag-pill">Bootstrap / CSS</span>
             </div>
+            <a class="project-link" href="https://github.com/priyanshuanubis/Vehicle-Parking-App" target="_blank" rel="noopener noreferrer">
+              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
           </article>
         </div>
       </section>
