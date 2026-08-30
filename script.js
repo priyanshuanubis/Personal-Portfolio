@@ -1,3 +1,4 @@
+// Year & UI Navigation Handlers
 const yearEl = document.getElementById("year");
 const navLinks = document.querySelector(".nav-links");
 const menuToggle = document.querySelector(".menu-toggle");
@@ -19,6 +20,7 @@ if (menuToggle && navLinks) {
   });
 }
 
+// Theme Management
 const root = document.documentElement;
 const savedTheme = localStorage.getItem("theme");
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -30,7 +32,7 @@ const applyTheme = (theme) => {
   }
 };
 
-applyTheme(savedTheme || (prefersDark ? "dark" : "dark")); // Default to dark for premium aesthetic
+applyTheme(savedTheme || (prefersDark ? "dark" : "dark"));
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
@@ -41,7 +43,7 @@ if (themeToggle) {
   });
 }
 
-// Scroll progress indicator
+// Scroll progress bar
 const progress = document.createElement("div");
 progress.className = "progress-bar";
 document.body.appendChild(progress);
@@ -72,9 +74,9 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Reveal-on-scroll for cards/sections
+// Reveal-on-scroll Intersection Observer
 const revealTargets = document.querySelectorAll(
-  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap, .highlight-card"
+  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap, .highlight-card, .flagship-banner, .timeline-item, .code-playground"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal"));
@@ -97,7 +99,7 @@ if ("IntersectionObserver" in window) {
   revealTargets.forEach((el) => el.classList.add("in"));
 }
 
-// Quick theme shortcut: press "T" to toggle theme
+// Theme shortcut: 'T' key
 window.addEventListener("keydown", (event) => {
   if (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA") return;
   if (event.key.toLowerCase() === "t" && !event.metaKey && !event.ctrlKey) {
@@ -108,7 +110,7 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-// Copy-to-clipboard for contact details
+// Clipboard toast notification
 const toast = document.createElement("div");
 toast.className = "toast";
 toast.setAttribute("role", "status");
@@ -133,16 +135,19 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
   });
 });
 
-// Interactive Project Filter & Keyword Search
+// Dynamic Project Search and Category Filter Handler
 const filterBtns = document.querySelectorAll(".filter-btn");
 const searchInput = document.getElementById("project-search");
 const projectCards = document.querySelectorAll(".project-card[data-category]");
+const countBadge = document.getElementById("project-count");
 
 let activeFilter = "all";
 let searchQuery = "";
 
 const filterProjects = () => {
   if (projectCards.length === 0) return;
+  let visibleCount = 0;
+
   projectCards.forEach((card) => {
     const category = card.getAttribute("data-category") || "";
     const titleText = card.querySelector("h3") ? card.querySelector("h3").textContent.toLowerCase() : "";
@@ -155,10 +160,15 @@ const filterProjects = () => {
 
     if (matchesCategory && matchesSearch) {
       card.style.display = "flex";
+      visibleCount++;
     } else {
       card.style.display = "none";
     }
   });
+
+  if (countBadge) {
+    countBadge.textContent = `${visibleCount} ${visibleCount === 1 ? 'Project' : 'Projects'}`;
+  }
 };
 
 if (filterBtns.length > 0) {
@@ -177,4 +187,87 @@ if (searchInput) {
     searchQuery = e.target.value.trim().toLowerCase();
     filterProjects();
   });
+}
+
+// Ambient Background Canvas Particle Animation
+const canvas = document.getElementById("ambient-canvas");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  let width, height;
+  let particles = [];
+  let mouse = { x: null, y: null };
+
+  const resize = () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  };
+  window.addEventListener("resize", resize);
+  resize();
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener("mouseleave", () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 1.8 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(56, 189, 248, 0.4)";
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 35; i++) {
+    particles.push(new Particle());
+  }
+
+  const animate = () => {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  };
+
+  animate();
 }

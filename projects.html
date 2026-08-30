@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <canvas id="ambient-canvas"></canvas>
+
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="container nav">
@@ -48,11 +50,33 @@
           A showcase of real-world software, AI models, cloud deployment pipelines, and computer vision systems built with clean architecture and scalable code.
         </p>
 
+        <!-- Flagship Project Spotlight Banner -->
+        <div class="flagship-banner reveal">
+          <div class="flagship-badge"><i class="bi bi-star-fill" aria-hidden="true"></i> Flagship Infrastructure Project</div>
+          <h2>Automated CI/CD Deployment Pipeline</h2>
+          <p>
+            An automated continuous integration &amp; deployment pipeline linking GitHub, Jenkins, and AWS cloud infrastructure for automated testing, artifact creation, and zero-downtime server deployments.
+          </p>
+          <div class="tech-tags">
+            <span class="tag-pill">AWS</span>
+            <span class="tag-pill">Jenkins</span>
+            <span class="tag-pill">GitHub Actions</span>
+            <span class="tag-pill">DevOps</span>
+            <span class="tag-pill">Shell</span>
+          </div>
+          <a class="project-link" href="https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer">
+            Explore Flagship Repo <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
         <!-- Project Toolbar: Search & Filter -->
         <div class="project-toolbar">
-          <div class="search-wrap">
-            <i class="bi bi-search" aria-hidden="true"></i>
-            <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, description, or tech stack..." aria-label="Search projects" />
+          <div class="search-flex">
+            <div class="search-wrap">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, description, or tech stack..." aria-label="Search projects" />
+            </div>
+            <span id="project-count" class="count-badge">8 Projects</span>
           </div>
 
           <div class="project-filters" aria-label="Project filter categories">

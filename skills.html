@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <canvas id="ambient-canvas"></canvas>
+
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="container nav">
@@ -44,42 +46,83 @@
     <main id="main-content">
       <section class="section container page-section skills-page">
         <div class="skills-header reveal">
-          <p class="eyebrow">Technical Expertise</p>
-          <h1 class="skills-heading">Skills &amp; <span class="gradient-text">Capabilities</span></h1>
+          <p class="eyebrow">Technical Capabilities</p>
+          <h1 class="skills-heading">Engineering <span class="gradient-text">Skills &amp; Toolkit</span></h1>
           <p class="skills-intro">
-            A comprehensive overview of my software engineering, machine learning, computer vision, and cloud infrastructure capabilities.
+            A comprehensive overview of my software development, computer vision models, cloud infrastructure, and data science capabilities.
           </p>
         </div>
 
         <div class="skills-cards" aria-label="Skill categories">
           <article class="skill-card reveal">
             <h2><i class="bi bi-code-slash" aria-hidden="true"></i> Programming Languages</h2>
-            <p>Python · Java · C++ · JavaScript · TypeScript · SQL · Rust · C · Bash Shell Scripting · Object-Oriented Design · Data Structures &amp; Algorithms</p>
+            <div class="skill-list-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">JavaScript (ES6+)</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Rust</span>
+              <span class="skill-tag">Bash Scripting</span>
+            </div>
           </article>
 
           <article class="skill-card reveal">
-            <h2><i class="bi bi-eye-fill" aria-hidden="true"></i> Computer Vision &amp; Deep Learning</h2>
-            <p>PyTorch · OpenCV · Convolutional Neural Networks (CNN) · HOG Feature Extractions · Object Detection &amp; Classification · Multi-Modal AI · TensorFlow / Keras</p>
+            <h2><i class="bi bi-eye-fill" aria-hidden="true"></i> Computer Vision &amp; AI</h2>
+            <div class="skill-list-tags">
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">OpenCV</span>
+              <span class="skill-tag">Convolutional Neural Networks</span>
+              <span class="skill-tag">HOG Features</span>
+              <span class="skill-tag">Multi-Modal Models</span>
+              <span class="skill-tag">TensorFlow / Keras</span>
+            </div>
           </article>
 
           <article class="skill-card reveal">
-            <h2><i class="bi bi-cloud-arrow-up-fill" aria-hidden="true"></i> DevOps &amp; Cloud Engineering</h2>
-            <p>AWS Cloud Services · Jenkins CI/CD · Automated Deployment Pipelines · GitHub Actions · Docker Basics · Infrastructure Automation</p>
+            <h2><i class="bi bi-cloud-arrow-up-fill" aria-hidden="true"></i> DevOps &amp; Cloud Systems</h2>
+            <div class="skill-list-tags">
+              <span class="skill-tag">AWS Services</span>
+              <span class="skill-tag">Jenkins CI/CD</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Docker Containers</span>
+              <span class="skill-tag">Automated Pipelines</span>
+            </div>
           </article>
 
           <article class="skill-card reveal">
-            <h2><i class="bi bi-terminal-fill" aria-hidden="true"></i> Systems, Linux &amp; Networking</h2>
-            <p>Distributed Log Monitoring · Remote Data Transfer &amp; Alerting · Bash Automation · Process Diagnostics (ps/top/htop/kill) · Networking Diagnostics (ping/curl/netstat) · Linux System Administration</p>
+            <h2><i class="bi bi-terminal-fill" aria-hidden="true"></i> Linux &amp; System Engineering</h2>
+            <div class="skill-list-tags">
+              <span class="skill-tag">Distributed Log Generation</span>
+              <span class="skill-tag">Remote Transfer &amp; Alerting</span>
+              <span class="skill-tag">Process Control (ps/top)</span>
+              <span class="skill-tag">Network Diagnostics</span>
+              <span class="skill-tag">Systemd Administration</span>
+            </div>
           </article>
 
           <article class="skill-card reveal">
-            <h2><i class="bi bi-layers-fill" aria-hidden="true"></i> Web &amp; Application Development</h2>
-            <p>HTML5 &amp; CSS3 · Modern JavaScript (ES6+) · Vue.js · Python Flask · RESTful APIs · Role-Based Auth · Responsive UI Systems</p>
+            <h2><i class="bi bi-layers-fill" aria-hidden="true"></i> Web &amp; API Architecture</h2>
+            <div class="skill-list-tags">
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">Python Flask</span>
+              <span class="skill-tag">RESTful APIs</span>
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">Role-Based Authentication</span>
+              <span class="skill-tag">SQLite / Relational Databases</span>
+            </div>
           </article>
 
           <article class="skill-card reveal">
             <h2><i class="bi bi-cpu-fill" aria-hidden="true"></i> Machine Learning &amp; Data Science</h2>
-            <p>Linear &amp; Logistic Regression · Support Vector Machines (SVM) · KNN · Decision Trees · Naive Bayes · Scikit-learn · Pandas &amp; NumPy · Data Analytics</p>
+            <div class="skill-list-tags">
+              <span class="skill-tag">Support Vector Machines (SVM)</span>
+              <span class="skill-tag">Linear &amp; Logistic Regression</span>
+              <span class="skill-tag">Decision Trees &amp; Naive Bayes</span>
+              <span class="skill-tag">Scikit-learn</span>
+              <span class="skill-tag">Pandas &amp; NumPy</span>
+            </div>
           </article>
         </div>
       </section>
