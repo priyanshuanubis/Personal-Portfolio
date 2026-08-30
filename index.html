@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <canvas id="ambient-canvas"></canvas>
+
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="container nav">
@@ -45,38 +47,63 @@
       <section class="hero container">
         <div>
           <p class="eyebrow">Priyanshu Raj</p>
-          <h1>Building <span class="gradient-text">sleek, practical &amp; intelligent</span> digital products.</h1>
+          <h1>Architecting <span class="gradient-text">AI Systems, Computer Vision &amp; Cloud</span> Infrastructure.</h1>
           <p class="hero-text">
-            I'm Priyanshu Raj, focused on Computer Vision, AI systems, automated DevOps pipelines, and full-stack web applications. BS in Data Science student at IIT Madras passionate about blending software engineering, deep learning, and clean minimalist design.
+            BS in Data Science student at IIT Madras engineering real-world Computer Vision models (PyTorch &amp; OpenCV), automated DevOps deployment pipelines (AWS &amp; Jenkins), and scalable full-stack web software.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="projects.html"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i> View Projects</a>
+            <a class="btn btn-primary" href="projects.html"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i> Explore Projects</a>
             <a class="btn btn-secondary" href="contact.html"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i> Connect</a>
           </div>
 
           <div class="status-row reveal">
-            <span class="status-pill">🟢 Open to Software Engineering Internships</span>
+            <span class="status-pill">🟢 Open to Software Engineering Roles</span>
             <span class="status-pill">⚡ Computer Vision · DevOps · Data Science</span>
           </div>
 
-          <div class="highlights-grid reveal" aria-label="Key highlights">
-            <article class="highlight-card">
-              <h3>Core Focus</h3>
-              <p>Computer Vision, PyTorch Deep Learning models, and AWS/Jenkins CI/CD automation.</p>
-            </article>
-            <article class="highlight-card">
-              <h3>Current Track</h3>
-              <p>BS in Data Science at IIT Madras, building real-world AI &amp; scalable software systems.</p>
-            </article>
+          <!-- Animated Stats Bar -->
+          <div class="stats-bar reveal" aria-label="Statistics">
+            <div class="stat-item">
+              <div class="stat-number">8+</div>
+              <div class="stat-label">GitHub Repos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Core Technologies</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">'27</div>
+              <div class="stat-label">IIT Madras Grad</div>
+            </div>
           </div>
         </div>
 
-        <div class="portrait-wrap reveal">
-          <img
-            class="portrait"
-            src="assets/portrait.jpg"
-            alt="Portrait of Priyanshu Raj"
-          />
+        <div class="hero-visual reveal">
+          <div class="portrait-wrap">
+            <img
+              class="portrait"
+              src="assets/portrait.jpg"
+              alt="Portrait of Priyanshu Raj"
+            />
+          </div>
+
+          <!-- IDE Code Playground -->
+          <div class="code-playground">
+            <div class="code-header">
+              <span class="code-dot dot-red"></span>
+              <span class="code-dot dot-yellow"></span>
+              <span class="code-dot dot-green"></span>
+              <span class="code-title">priyanshu.config.js</span>
+            </div>
+            <div class="code-body">
+              <span class="syntax-keyword">const</span> <span class="syntax-var">engineer</span> = {<br />
+              &nbsp;&nbsp;name: <span class="syntax-string">'Priyanshu Raj'</span>,<br />
+              &nbsp;&nbsp;education: <span class="syntax-string">'IIT Madras (BS Data Science)'</span>,<br />
+              &nbsp;&nbsp;domains: [<span class="syntax-string">'Computer Vision'</span>, <span class="syntax-string">'DevOps'</span>, <span class="syntax-string">'Full-Stack'</span>],<br />
+              &nbsp;&nbsp;coreStack: [<span class="syntax-string">'PyTorch'</span>, <span class="syntax-string">'OpenCV'</span>, <span class="syntax-string">'AWS'</span>, <span class="syntax-string">'Jenkins'</span>]<br />
+              };
+            </div>
+          </div>
         </div>
       </section>
     </main>
