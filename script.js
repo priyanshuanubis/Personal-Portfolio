@@ -275,3 +275,130 @@ if (canvas) {
 
   animate();
 }
+
+// Interactive Neural Network Graphic Visualizer (Machine Learning Engine)
+const mlCanvas = document.getElementById("ml-canvas");
+if (mlCanvas) {
+  const mlCtx = mlCanvas.getContext("2d");
+  let mlWidth, mlHeight;
+  let packets = [];
+
+  const mlResize = () => {
+    if (!mlCanvas.parentElement) return;
+    mlWidth = mlCanvas.width = mlCanvas.parentElement.clientWidth;
+    mlHeight = mlCanvas.height = mlCanvas.parentElement.clientHeight;
+  };
+  window.addEventListener("resize", mlResize);
+  mlResize();
+
+  // Define 4 Neural Network Layers (Input, Hidden 1, Hidden 2, Output)
+  const layerCounts = [3, 4, 4, 3];
+
+  const getNodes = () => {
+    const nodes = [];
+    const layerSpacing = mlWidth / (layerCounts.length + 1);
+    for (let l = 0; l < layerCounts.length; l++) {
+      const count = layerCounts[l];
+      const nodeSpacing = mlHeight / (count + 1);
+      const x = layerSpacing * (l + 1);
+      for (let i = 0; i < count; i++) {
+        const y = nodeSpacing * (i + 1);
+        nodes.push({ layer: l, index: i, x, y, pulse: Math.random() * Math.PI * 2 });
+      }
+    }
+    return nodes;
+  };
+
+  let nodes = getNodes();
+  window.addEventListener("resize", () => {
+    mlResize();
+    nodes = getNodes();
+  });
+
+  class SynapsePacket {
+    constructor(fromNode, toNode) {
+      this.from = fromNode;
+      this.to = toNode;
+      this.progress = 0;
+      this.speed = 0.015 + Math.random() * 0.015;
+    }
+
+    update() {
+      this.progress += this.speed;
+    }
+
+    draw(isLight) {
+      const x = this.from.x + (this.to.x - this.from.x) * this.progress;
+      const y = this.from.y + (this.to.y - this.from.y) * this.progress;
+      mlCtx.beginPath();
+      mlCtx.arc(x, y, 3, 0, Math.PI * 2);
+      mlCtx.fillStyle = isLight ? "rgba(79, 70, 229, 0.95)" : "rgba(56, 189, 248, 0.95)";
+      mlCtx.fill();
+    }
+  }
+
+  const spawnPacket = () => {
+    const fromLayers = nodes.filter((n) => n.layer < layerCounts.length - 1);
+    if (fromLayers.length === 0) return;
+    const fromNode = fromLayers[Math.floor(Math.random() * fromLayers.length)];
+    const toNodes = nodes.filter((n) => n.layer === fromNode.layer + 1);
+    if (toNodes.length === 0) return;
+    const toNode = toNodes[Math.floor(Math.random() * toNodes.length)];
+    packets.push(new SynapsePacket(fromNode, toNode));
+  };
+
+  const animateML = () => {
+    mlCtx.clearRect(0, 0, mlWidth, mlHeight);
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+
+    if (Math.random() < 0.25 && packets.length < 18) {
+      spawnPacket();
+    }
+
+    // Draw Synapse Connection Lines between Layers
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = 0; j < nodes.length; j++) {
+        if (nodes[j].layer === nodes[i].layer + 1) {
+          mlCtx.beginPath();
+          mlCtx.moveTo(nodes[i].x, nodes[i].y);
+          mlCtx.lineTo(nodes[j].x, nodes[j].y);
+          mlCtx.strokeStyle = isLight ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.14)";
+          mlCtx.lineWidth = 1;
+          mlCtx.stroke();
+        }
+      }
+    }
+
+    // Update & Draw Synapse Data Packets
+    for (let p = packets.length - 1; p >= 0; p--) {
+      packets[p].update();
+      packets[p].draw(isLight);
+      if (packets[p].progress >= 1) {
+        packets.splice(p, 1);
+      }
+    }
+
+    // Draw Neural Nodes
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      n.pulse += 0.05;
+      const glowScale = Math.sin(n.pulse) * 1.5 + 4.5;
+
+      mlCtx.beginPath();
+      mlCtx.arc(n.x, n.y, glowScale, 0, Math.PI * 2);
+      mlCtx.fillStyle = isLight ? "rgba(2, 132, 199, 0.9)" : "rgba(56, 189, 248, 0.9)";
+      mlCtx.fill();
+
+      // Outer activation pulse ring
+      mlCtx.beginPath();
+      mlCtx.arc(n.x, n.y, glowScale + 3, 0, Math.PI * 2);
+      mlCtx.strokeStyle = isLight ? "rgba(79, 70, 229, 0.4)" : "rgba(168, 85, 247, 0.45)";
+      mlCtx.lineWidth = 1.2;
+      mlCtx.stroke();
+    }
+
+    requestAnimationFrame(animateML);
+  };
+
+  animateML();
+}

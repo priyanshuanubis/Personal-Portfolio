@@ -78,6 +78,43 @@
         </div>
 
         <div class="hero-visual reveal">
+          <!-- Interactive Machine Learning Neural Network Visualizer Card -->
+          <div class="ml-graphics-card">
+            <div class="ml-header">
+              <div class="ml-status">
+                <span class="ml-live-dot"></span>
+                <span class="ml-title">Machine Learning Engine</span>
+              </div>
+              <span class="ml-chip"><i class="bi bi-cpu-fill" aria-hidden="true"></i> PyTorch · 99.8% Acc</span>
+            </div>
+
+            <div class="ml-canvas-wrap">
+              <canvas id="ml-canvas"></canvas>
+              <div class="ml-scanline"></div>
+
+              <!-- Computer Vision Reticle & Tensor HUD -->
+              <div class="ml-hud-overlay">
+                <div class="ml-hud-badge"><i class="bi bi-eye-fill" aria-hidden="true"></i> Vision Tensor: [64, 3, 224, 224]</div>
+                <div class="ml-hud-badge loss-badge"><i class="bi bi-activity" aria-hidden="true"></i> Loss: 0.0038</div>
+              </div>
+            </div>
+
+            <div class="ml-footer-stats">
+              <div class="ml-stat">
+                <span class="ml-stat-val">Epoch 200/200</span>
+                <span class="ml-stat-lbl">Forward Pass</span>
+              </div>
+              <div class="ml-stat">
+                <span class="ml-stat-val">3.2 ms</span>
+                <span class="ml-stat-lbl">Inference Speed</span>
+              </div>
+              <div class="ml-stat">
+                <span class="ml-stat-val">ResNet + OpenCV</span>
+                <span class="ml-stat-lbl">Architecture</span>
+              </div>
+            </div>
+          </div>
+
           <div class="portrait-wrap">
             <img
               class="portrait"
