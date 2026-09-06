@@ -76,7 +76,7 @@ backToTop.addEventListener("click", () => {
 
 // Reveal-on-scroll Intersection Observer
 const revealTargets = document.querySelectorAll(
-  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap, .highlight-card, .flagship-banner, .timeline-item, .code-playground"
+  ".project-card, .skill-card, .contact-item, .about-card, .education-card, .portrait-wrap, .highlight-card, .flagship-banner, .timeline-item, .code-playground, .hero-visual, .ml-graphics-card"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal"));
@@ -251,6 +251,24 @@ if (canvas) {
       particles[i].update();
       particles[i].draw(isLight);
 
+      // Connect background particles to mouse cursor if near
+      if (mouse.x !== null && mouse.y !== null) {
+        const mdx = particles[i].x - mouse.x;
+        const mdy = particles[i].y - mouse.y;
+        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mdist < 170) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          const mAlpha = (isLight ? 0.38 : 0.3) * (1 - mdist / 170);
+          ctx.strokeStyle = isLight
+            ? `rgba(2, 132, 199, ${mAlpha})`
+            : `rgba(56, 189, 248, ${mAlpha})`;
+          ctx.lineWidth = isLight ? 1.2 : 0.9;
+          ctx.stroke();
+        }
+      }
+
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
@@ -282,6 +300,8 @@ if (mlCanvas) {
   const mlCtx = mlCanvas.getContext("2d");
   let mlWidth, mlHeight;
   let packets = [];
+  let mlMouse = { x: null, y: null };
+  let shockwaves = [];
 
   const mlResize = () => {
     if (!mlCanvas.parentElement) return;
@@ -290,6 +310,37 @@ if (mlCanvas) {
   };
   window.addEventListener("resize", mlResize);
   mlResize();
+
+  mlCanvas.addEventListener("mousemove", (e) => {
+    const rect = mlCanvas.getBoundingClientRect();
+    mlMouse.x = e.clientX - rect.left;
+    mlMouse.y = e.clientY - rect.top;
+
+    const tensorBadge = document.querySelector(".ml-hud-badge");
+    if (tensorBadge) {
+      tensorBadge.innerHTML = `<i class="bi bi-eye-fill"></i> Tensor: [${Math.round(mlMouse.x)}, ${Math.round(mlMouse.y)}, 224, 224]`;
+    }
+  });
+
+  mlCanvas.addEventListener("mouseleave", () => {
+    mlMouse.x = null;
+    mlMouse.y = null;
+    const tensorBadge = document.querySelector(".ml-hud-badge");
+    if (tensorBadge) {
+      tensorBadge.innerHTML = `<i class="bi bi-eye-fill"></i> Vision Tensor: [64, 3, 224, 224]`;
+    }
+  });
+
+  mlCanvas.addEventListener("click", (e) => {
+    const rect = mlCanvas.getBoundingClientRect();
+    shockwaves.push({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      radius: 4,
+      maxRadius: 75,
+      alpha: 1
+    });
+  });
 
   // Define 4 Neural Network Layers (Input, Hidden 1, Hidden 2, Output)
   const layerCounts = [3, 4, 4, 3];
@@ -331,7 +382,7 @@ if (mlCanvas) {
       const x = this.from.x + (this.to.x - this.from.x) * this.progress;
       const y = this.from.y + (this.to.y - this.from.y) * this.progress;
       mlCtx.beginPath();
-      mlCtx.arc(x, y, 3, 0, Math.PI * 2);
+      mlCtx.arc(x, y, 3.5, 0, Math.PI * 2);
       mlCtx.fillStyle = isLight ? "rgba(79, 70, 229, 0.95)" : "rgba(56, 189, 248, 0.95)";
       mlCtx.fill();
     }
@@ -351,7 +402,7 @@ if (mlCanvas) {
     mlCtx.clearRect(0, 0, mlWidth, mlHeight);
     const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
-    if (Math.random() < 0.25 && packets.length < 18) {
+    if (Math.random() < 0.28 && packets.length < 20) {
       spawnPacket();
     }
 
@@ -362,11 +413,61 @@ if (mlCanvas) {
           mlCtx.beginPath();
           mlCtx.moveTo(nodes[i].x, nodes[i].y);
           mlCtx.lineTo(nodes[j].x, nodes[j].y);
-          mlCtx.strokeStyle = isLight ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.14)";
+          mlCtx.strokeStyle = isLight ? "rgba(15, 23, 42, 0.16)" : "rgba(255, 255, 255, 0.15)";
           mlCtx.lineWidth = 1;
           mlCtx.stroke();
         }
       }
+    }
+
+    // Draw Cursor Interactive Synapses when hovering over canvas
+    if (mlMouse.x !== null && mlMouse.y !== null) {
+      for (let i = 0; i < nodes.length; i++) {
+        const dx = nodes[i].x - mlMouse.x;
+        const dy = nodes[i].y - mlMouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) {
+          mlCtx.beginPath();
+          mlCtx.moveTo(nodes[i].x, nodes[i].y);
+          mlCtx.lineTo(mlMouse.x, mlMouse.y);
+          const alpha = (1 - dist / 140);
+          mlCtx.strokeStyle = isLight
+            ? `rgba(79, 70, 229, ${alpha * 0.8})`
+            : `rgba(56, 189, 248, ${alpha * 0.85})`;
+          mlCtx.lineWidth = 1.5;
+          mlCtx.stroke();
+        }
+      }
+
+      // Cursor Node Indicator
+      mlCtx.beginPath();
+      mlCtx.arc(mlMouse.x, mlMouse.y, 6, 0, Math.PI * 2);
+      mlCtx.fillStyle = isLight ? "rgba(79, 70, 229, 0.95)" : "rgba(168, 85, 247, 0.95)";
+      mlCtx.fill();
+
+      mlCtx.beginPath();
+      mlCtx.arc(mlMouse.x, mlMouse.y, 12, 0, Math.PI * 2);
+      mlCtx.strokeStyle = isLight ? "rgba(2, 132, 199, 0.6)" : "rgba(56, 189, 248, 0.6)";
+      mlCtx.lineWidth = 1.2;
+      mlCtx.stroke();
+    }
+
+    // Update & Draw Click Shockwaves
+    for (let s = shockwaves.length - 1; s >= 0; s--) {
+      const sw = shockwaves[s];
+      sw.radius += 2.5;
+      sw.alpha -= 0.025;
+      if (sw.alpha <= 0 || sw.radius >= sw.maxRadius) {
+        shockwaves.splice(s, 1);
+        continue;
+      }
+      mlCtx.beginPath();
+      mlCtx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+      mlCtx.strokeStyle = isLight
+        ? `rgba(79, 70, 229, ${sw.alpha})`
+        : `rgba(56, 189, 248, ${sw.alpha})`;
+      mlCtx.lineWidth = 2;
+      mlCtx.stroke();
     }
 
     // Update & Draw Synapse Data Packets
@@ -382,17 +483,17 @@ if (mlCanvas) {
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
       n.pulse += 0.05;
-      const glowScale = Math.sin(n.pulse) * 1.5 + 4.5;
+      const glowScale = Math.sin(n.pulse) * 1.5 + 5;
 
       mlCtx.beginPath();
       mlCtx.arc(n.x, n.y, glowScale, 0, Math.PI * 2);
-      mlCtx.fillStyle = isLight ? "rgba(2, 132, 199, 0.9)" : "rgba(56, 189, 248, 0.9)";
+      mlCtx.fillStyle = isLight ? "rgba(2, 132, 199, 0.95)" : "rgba(56, 189, 248, 0.95)";
       mlCtx.fill();
 
       // Outer activation pulse ring
       mlCtx.beginPath();
-      mlCtx.arc(n.x, n.y, glowScale + 3, 0, Math.PI * 2);
-      mlCtx.strokeStyle = isLight ? "rgba(79, 70, 229, 0.4)" : "rgba(168, 85, 247, 0.45)";
+      mlCtx.arc(n.x, n.y, glowScale + 3.5, 0, Math.PI * 2);
+      mlCtx.strokeStyle = isLight ? "rgba(79, 70, 229, 0.45)" : "rgba(168, 85, 247, 0.5)";
       mlCtx.lineWidth = 1.2;
       mlCtx.stroke();
     }
