@@ -7,7 +7,8 @@
   --surface: rgba(15, 23, 42, 0.92);
   --surface-hover: rgba(30, 41, 59, 0.95);
   --surface-soft: #1e293b;
-  --text: #ffffff;
+  --text-heading: #ffffff;
+  --text: #f8fafc;
   --muted: #cbd5e1;
   --primary: #38bdf8;
   --primary-glow: rgba(56, 189, 248, 0.4);
@@ -20,26 +21,44 @@
   --shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
   --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
   --card-radius: 22px;
+  --tag-bg: #1e293b;
+  --tag-text: #f8fafc;
+  --tag-border: #334155;
+  --flagship-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+  --code-bg: #0d1322;
+  --code-header-bg: #162035;
+  --code-text: #f1f5f9;
+  --code-title: #94a3b8;
 }
 
 [data-theme="light"] {
-  --bg: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --surface: #ffffff;
-  --surface-hover: #ffffff;
+  /* High-Contrast Crisp Vibrant Light Theme */
+  --bg: #f4f6fc;
+  --bg-secondary: #e2e8f0;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-hover: rgba(255, 255, 255, 0.98);
   --surface-soft: #e2e8f0;
-  --text: #0f172a;
-  --muted: #334155;
+  --text-heading: #0f172a;
+  --text: #1e293b;
+  --muted: #475569;
   --primary: #0284c7;
   --primary-glow: rgba(2, 132, 199, 0.25);
   --secondary: #4f46e5;
-  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
-  --accent-glow: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 70%);
-  --border: #cbd5e1;
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #7e22ce 100%);
+  --accent-glow: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, transparent 70%);
+  --border: rgba(15, 23, 42, 0.14);
   --border-hover: #0284c7;
-  --header-bg: rgba(255, 255, 255, 0.95);
-  --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
-  --glass-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.1);
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  --glass-shadow: 0 12px 35px 0 rgba(31, 38, 135, 0.08);
+  --tag-bg: #e2e8f0;
+  --tag-text: #0f172a;
+  --tag-border: #cbd5e1;
+  --flagship-bg: linear-gradient(135deg, rgba(241, 245, 249, 0.95), rgba(226, 232, 240, 0.9));
+  --code-bg: #1e293b;
+  --code-header-bg: #0f172a;
+  --code-text: #f8fafc;
+  --code-title: #cbd5e1;
 }
 
 * {
@@ -287,7 +306,7 @@ body {
 h1, h2, h3 {
   font-family: "Outfit", sans-serif;
   letter-spacing: -0.02em;
-  color: var(--text);
+  color: var(--text-heading);
 }
 
 h1 {
@@ -400,7 +419,7 @@ h2 {
 
 /* IDE Code Playground Window */
 .code-playground {
-  background: #0d1322;
+  background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 18px;
   overflow: hidden;
@@ -410,7 +429,7 @@ h2 {
 }
 
 .code-header {
-  background: #162035;
+  background: var(--code-header-bg);
   padding: 0.65rem 1rem;
   display: flex;
   align-items: center;
@@ -431,7 +450,7 @@ h2 {
 
 .code-title {
   margin-left: auto;
-  color: #94a3b8;
+  color: var(--code-title);
   font-size: 0.78rem;
   font-weight: 600;
 }
@@ -439,7 +458,7 @@ h2 {
 .code-body {
   padding: 1.1rem 1.25rem;
   line-height: 1.75;
-  color: #f1f5f9;
+  color: var(--code-text);
 }
 
 .syntax-keyword { color: #f472b6; font-weight: 700; }
@@ -505,13 +524,13 @@ h2 {
 
 /* Flagship Project Spotlight Banner */
 .flagship-banner {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+  background: var(--flagship-bg);
   border: 1.5px solid var(--primary);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 2.2rem;
   margin-bottom: 2.5rem;
-  box-shadow: 0 16px 40px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 16px 40px var(--primary-glow);
   position: relative;
   overflow: hidden;
 }
@@ -534,7 +553,7 @@ h2 {
 .flagship-banner h2 {
   font-size: 1.8rem;
   margin-bottom: 0.6rem;
-  color: #ffffff;
+  color: var(--text-heading);
 }
 
 .flagship-banner p {
@@ -584,7 +603,7 @@ h2 {
   border: 1px solid var(--border);
   background: var(--surface);
   backdrop-filter: blur(16px);
-  color: #ffffff;
+  color: var(--text);
   font-size: 0.98rem;
   font-family: inherit;
   font-weight: 600;
@@ -593,7 +612,7 @@ h2 {
 }
 
 .search-input::placeholder {
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .search-input:focus {
@@ -624,7 +643,7 @@ h2 {
   border: 1px solid var(--border);
   background: var(--surface-soft);
   backdrop-filter: blur(14px);
-  color: #f1f5f9;
+  color: var(--text);
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
@@ -681,7 +700,7 @@ h2 {
 .project-card:hover {
   transform: translateY(-6px);
   border-color: var(--border-hover);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+  box-shadow: var(--shadow);
 }
 
 .project-card:hover::before {
@@ -691,7 +710,7 @@ h2 {
 .project-card h3 {
   margin: 0 0 0.65rem;
   font-size: 1.25rem;
-  color: #ffffff;
+  color: var(--text-heading);
 }
 
 .project-card p {
@@ -715,15 +734,9 @@ h2 {
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  background: #1e293b;
-  color: #f8fafc;
-  border: 1px solid #334155;
-}
-
-[data-theme="light"] .tag-pill {
-  background: #e2e8f0;
-  color: #0f172a;
-  border-color: #cbd5e1;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--tag-border);
 }
 
 .project-link {
@@ -740,14 +753,14 @@ h2 {
 
 .project-link:hover {
   gap: 0.75rem;
-  color: #60a5fa;
+  color: var(--secondary);
 }
 
 /* Skills Page with High Contrast Tags */
 .skills-cards .skill-card h2 {
   font-size: 1.2rem;
   margin-bottom: 0.9rem;
-  color: #ffffff;
+  color: var(--text-heading);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -769,15 +782,9 @@ h2 {
   font-weight: 700;
   padding: 0.4rem 0.85rem;
   border-radius: 10px;
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #f8fafc;
-}
-
-[data-theme="light"] .skill-tag {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-  color: #0f172a;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--tag-text);
 }
 
 /* Timeline Journey Roadmap (About Page) */
@@ -808,7 +815,7 @@ h2 {
 .timeline-item h3 {
   margin: 0 0 0.2rem;
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--text-heading);
 }
 
 .timeline-item span {

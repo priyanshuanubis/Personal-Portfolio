@@ -231,10 +231,10 @@ if (canvas) {
       if (this.y < 0 || this.y > height) this.vy *= -1;
     }
 
-    draw() {
+    draw(isLight) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(56, 189, 248, 0.4)";
+      ctx.fillStyle = isLight ? "rgba(2, 132, 199, 0.65)" : "rgba(56, 189, 248, 0.45)";
       ctx.fill();
     }
   }
@@ -245,10 +245,11 @@ if (canvas) {
 
   const animate = () => {
     ctx.clearRect(0, 0, width, height);
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
-      particles[i].draw();
+      particles[i].draw(isLight);
 
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -259,8 +260,11 @@ if (canvas) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.6;
+          const strokeAlpha = (isLight ? 0.28 : 0.18) * (1 - dist / 120);
+          ctx.strokeStyle = isLight
+            ? `rgba(79, 70, 229, ${strokeAlpha})`
+            : `rgba(56, 189, 248, ${strokeAlpha})`;
+          ctx.lineWidth = isLight ? 0.8 : 0.6;
           ctx.stroke();
         }
       }
