@@ -1,0 +1,130 @@
+================================================================================
+PRIYANSHU RAJ - KNOWLEDGE BASE & PERSONAL PROFILE DOCUMENT
+================================================================================
+Note: This document serves as the authoritative single-source-of-truth knowledge base 
+for the website AI Chatbot ("Priyanshu AI"). Any updates made to this text document 
+will be automatically read by the chatbot.
+
+--------------------------------------------------------------------------------
+1. PERSONAL DETAILS & CONTACT INFORMATION
+--------------------------------------------------------------------------------
+- Full Name: Priyanshu Raj
+- Preferred Name: Priyanshu
+- Title: Software Engineer, Computer Vision Engineer & AI Builder
+- Current Status: Open to Software Engineering, Computer Vision, and DevOps Roles
+- Email: priyanshuanubis33@gmail.com
+- Mobile Phone: +91 9990206348
+- LinkedIn Profile: https://linkedin.com/in/priyanshu-raj-05633831b
+- GitHub Profile: https://github.com/priyanshuanubis
+- Instagram Profile: https://www.instagram.com/priyanshuanubis?igsh=MTlmbnZ1bDB3cDIzNg==
+- Core Focus Areas: AI Systems, Computer Vision (PyTorch & OpenCV), DevOps & Cloud Pipelines (AWS & Jenkins), Distributed Log Systems, Full-Stack Web Development.
+
+--------------------------------------------------------------------------------
+2. ACADEMICS & EDUCATION
+--------------------------------------------------------------------------------
+- Degree Program: Bachelor of Science (BS) in Data Science & Applications
+- Institution: Indian Institute of Technology Madras (IIT Madras)
+- Duration / Timeline: 2024 - Present (Expected Completion: 2027)
+- Key Academic Topics:
+  * Machine Learning Algorithms & Neural Network Architectures
+  * Statistical Data Analysis & Data Science Foundations
+  * Computer Science Core Concepts & Data Structures
+  * Deep Learning, Computer Vision, and Image Processing
+  * Relational Databases, SQL & Application Development
+  * Systems & Software Engineering Principles
+
+--------------------------------------------------------------------------------
+3. WORK EXPERIENCE & PROFESSIONAL DOMAINS
+--------------------------------------------------------------------------------
+- AI & Computer Vision Systems (2024 - Present):
+  * Engineering real-time computer vision models using PyTorch, OpenCV, and NumPy.
+  * Building multi-modal models for real-time safety, perimeter protection, and distraction detection.
+  * Benchmark evaluation using GTSRB traffic sign datasets and medical chest X-ray imaging.
+
+- Cloud Infrastructure & DevOps (2025 - Present):
+  * Designing automated continuous integration and deployment (CI/CD) pipelines.
+  * Connecting GitHub repositories with Jenkins automation server and AWS cloud infrastructure.
+  * Automated testing, build artifact generation, and zero-downtime server deployments.
+
+- Distributed Systems & Linux System Engineering:
+  * Real-time distributed log generation, remote log shipping, centralized log aggregation.
+  * Automated incident detection, threshold alerting, and system performance monitoring.
+
+- Full-Stack Web Architecture:
+  * Developing responsive, accessible, and high-performance web applications.
+  * Frontend: Modern JavaScript (ES6+), HTML5, CSS3, Vue.js, Bootstrap.
+  * Backend: Python Flask, RESTful APIs, SQLite, Role-based Access Control (RBAC).
+
+--------------------------------------------------------------------------------
+4. FEATURED PROJECTS & REPOSITORIES (8 REPOSITORIES)
+--------------------------------------------------------------------------------
+1. Automated CI/CD Deployment Pipeline (Flagship Project)
+   - Description: An end-to-end continuous integration and deployment pipeline linking GitHub, Jenkins, and AWS cloud infrastructure for automated testing, artifact creation, and zero-downtime server deployment.
+   - Tech Stack: AWS, Jenkins, GitHub Actions, DevOps, Shell Scripting.
+   - GitHub Link: https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline
+
+2. HandGuardCV
+   - Description: Real-time virtual boundary protection and workspace perimeter safety system engineered using classical computer vision algorithms and hand tracking in Python & OpenCV.
+   - Tech Stack: Python, OpenCV, Computer Vision, NumPy.
+   - GitHub Link: https://github.com/priyanshuanubis/HandGuardCV
+
+3. Traffic Sign Recognition Benchmark
+   - Description: Classification pipeline evaluating PyTorch Deep Convolutional Neural Networks (CNNs) against HOG feature extractions and Support Vector Machine (SVM) baselines using the German Traffic Sign Recognition Benchmark (GTSRB).
+   - Tech Stack: PyTorch, CNN, OpenCV, HOG + SVM, Python.
+   - GitHub Link: https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark
+
+4. Distributed Log Monitoring System
+   - Description: Distributed system architecture for real-time log generation, secure remote transfer, centralized log aggregation, and automated incident alerting.
+   - Tech Stack: JavaScript, Node.js, Bash Scripting, System Logging.
+   - GitHub Link: https://github.com/priyanshuanubis/log-monitoring-system
+
+5. Lightweight Multi-Modal Driver Distraction Detection System
+   - Description: Lightweight, multi-modal neural network architecture designed for real-time driver monitoring and distraction detection under edge compute constraints.
+   - Tech Stack: PyTorch, Deep Learning, Computer Vision, Multi-Modal Networks.
+   - GitHub Link: https://github.com/priyanshuanubis/Lightweight-Multi-Modal-Driver-Distraction-Detection-System
+
+6. Placement Portal App
+   - Description: Full-stack campus placement management application featuring role-based authentication, student application tracking, company job postings, and RESTful APIs.
+   - Tech Stack: JavaScript, Vue.js, Python Flask, SQLite, REST APIs.
+   - GitHub Link: https://github.com/priyanshuanubis/Placement-Portal-App
+
+7. Pneumonia Detection CNN
+   - Description: Convolutional Neural Network (CNN) model trained for automated diagnosis and binary classification of pneumonia from chest X-ray medical imaging.
+   - Tech Stack: TensorFlow, Keras, CNN, Medical Imaging.
+   - GitHub Link: https://github.com/priyanshuanubis/pneumonia-detection-cnn
+
+8. Vehicle Parking App
+   - Description: Parking management application streamlining slot tracking, vehicle entry and exit handling, real-time status updates, and operational analytics.
+   - Tech Stack: Python, Flask, SQLite, Bootstrap / CSS.
+   - GitHub Link: https://github.com/priyanshuanubis/Vehicle-Parking-App
+
+--------------------------------------------------------------------------------
+5. TECHNICAL SKILLS & TOOLKIT
+--------------------------------------------------------------------------------
+- Programming Languages: Python, C++, Java, JavaScript (ES6+), TypeScript, SQL, Rust, Bash Scripting.
+- Computer Vision & AI: PyTorch, OpenCV, Convolutional Neural Networks (CNNs), HOG Features, Multi-Modal Neural Networks, TensorFlow, Keras.
+- DevOps & Cloud Systems: AWS Services (EC2, S3, IAM), Jenkins CI/CD, GitHub Actions, Docker Containers, Automated Deployment Pipelines.
+- Linux & Systems: Distributed Log Generation, Remote Transfer & Alerting, Process Control (ps/top), Network Diagnostics, Systemd Administration.
+- Web & API Architecture: Vue.js, Python Flask, RESTful APIs, HTML5, CSS3, Role-Based Authentication, SQLite & Relational Databases.
+- Machine Learning & Data Science: Support Vector Machines (SVM), Linear & Logistic Regression, Decision Trees, Naive Bayes, Scikit-learn, Pandas, NumPy.
+
+--------------------------------------------------------------------------------
+6. HOBBIES, PERSONAL INTERESTS & ATTRIBUTES
+--------------------------------------------------------------------------------
+- Autonomous AI Systems Research: Enthusiastic about designing edge AI models, real-time computer vision applications, and autonomous agents.
+- Open Source & Project Building: Passionate about crafting well-documented open-source software and developer tooling on GitHub.
+- Competitive Problem Solving: Enjoy solving algorithmic puzzles, logic challenges, and optimizing code performance in C++ and Python.
+- Tech Blogging & Paper Reading: Regularly reads research preprints (arXiv) on computer vision, multimodal transformers, and Cloud/DevOps architectures.
+- Hardware & IoT Tinkering: Enjoys experimenting with edge computing devices (Raspberry Pi, NVIDIA Jetson, microcontroller modules) for computer vision experiments.
+- Gaming & Tech Community: Gamer who enjoys strategy and simulation games, active participant in tech communities, hackathons, and developer forums.
+- Learning Mindset: Passionate about continuous improvement, taking on challenging engineering problems, and staying ahead of modern AI developments.
+
+--------------------------------------------------------------------------------
+7. CHATBOT DIRECTIVES & STRICT REFUSAL POLICY
+--------------------------------------------------------------------------------
+- Bot Identity: Priyanshu's AI Assistant ("Priyanshu AI").
+- Primary Scope: The chatbot MUST strictly answer questions about Priyanshu Raj's academics, background, projects, skills, work experience, contact channels, and hobbies based on this knowledge base document.
+- Refusal Behavior: If a user asks a question that is NOT related to Priyanshu Raj (such as general knowledge trivia, general math, writing random code homework, cooking recipes, current news, etc.), the chatbot MUST refuse politely.
+- Standard Refusal Response: 
+  "I am Priyanshu's AI Assistant created strictly to answer questions about Priyanshu Raj (his education at IIT Madras, technical projects, skills, experience, hobbies, and contact details). Please ask a question related to Priyanshu!"
+================================================================================
