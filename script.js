@@ -450,6 +450,7 @@ if (mlCanvas) {
         if (currentMode === "neural") archStat.textContent = "ResNet + OpenCV";
         else if (currentMode === "vision") archStat.textContent = "YOLOv8 + ConvNet";
         else if (currentMode === "attention") archStat.textContent = "Transformer MultiHead";
+        else if (currentMode === "game") archStat.textContent = "Neural Arcade";
       }
     });
   });
@@ -768,6 +769,13 @@ if (mlCanvas) {
     }
 
     // ---------------------------------------------------------
+    // MODE 4: 🎮 PLAYABLE LIGHTWEIGHT NEURAL ARCADE GAME
+    // ---------------------------------------------------------
+    else if (currentMode === "game") {
+      renderNeuralArcadeGame(isLight);
+    }
+
+    // ---------------------------------------------------------
     // CLICK SHOCKWAVES IN ML CANVAS
     // ---------------------------------------------------------
     for (let s = shockwaves.length - 1; s >= 0; s--) {
@@ -789,6 +797,347 @@ if (mlCanvas) {
 
     requestAnimationFrame(animateML);
   };
+
+  // ---------------------------------------------------------
+  // NEURAL ARCADE GAME ENGINE LOGIC & CONTROLS
+  // ---------------------------------------------------------
+  let gameStatus = "START"; // "START", "PLAYING", "GAMEOVER"
+  let gameScore = 0;
+  let gameHighScore = parseInt(localStorage.getItem("neural_arcade_highscore") || "0", 10);
+  let gameShield = 100;
+  let gameLevel = 1;
+  let gameKeys = {};
+
+  const gamePlayer = {
+    x: 100,
+    y: 100,
+    r: 13,
+    speed: 5
+  };
+
+  let gameTensors = [];
+  let gameAnomalies = [];
+  let gameParticles = [];
+
+  function resetGame() {
+    gameScore = 0;
+    gameShield = 100;
+    gameLevel = 1;
+    gamePlayer.x = mlWidth / 2;
+    gamePlayer.y = mlHeight / 2;
+    gameTensors = [];
+    gameAnomalies = [];
+    gameParticles = [];
+
+    for (let i = 0; i < 5; i++) spawnGameTensor();
+    for (let i = 0; i < 2; i++) spawnGameAnomaly();
+
+    gameStatus = "PLAYING";
+  }
+
+  function spawnGameTensor() {
+    gameTensors.push({
+      x: 25 + Math.random() * (mlWidth - 50),
+      y: 25 + Math.random() * (mlHeight - 50),
+      r: 7 + Math.random() * 3,
+      isGold: Math.random() < 0.22,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  function spawnGameAnomaly() {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 1.6 + Math.random() * 1.2 + gameLevel * 0.25;
+    gameAnomalies.push({
+      x: Math.random() < 0.5 ? 20 : mlWidth - 20,
+      y: Math.random() * (mlHeight - 40) + 20,
+      r: 12,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      spin: Math.random() * Math.PI * 2
+    });
+  }
+
+  function spawnGameParticles(x, y, color, count = 10) {
+    for (let i = 0; i < count; i++) {
+      const pAngle = Math.random() * Math.PI * 2;
+      const pSpeed = Math.random() * 3.5 + 1;
+      gameParticles.push({
+        x,
+        y,
+        vx: Math.cos(pAngle) * pSpeed,
+        vy: Math.sin(pAngle) * pSpeed,
+        r: Math.random() * 3 + 1.5,
+        color,
+        alpha: 1
+      });
+    }
+  }
+
+  // Keyboard controls
+  window.addEventListener("keydown", (e) => {
+    if (currentMode !== "game") return;
+    gameKeys[e.code] = true;
+    gameKeys[e.key] = true;
+    if (e.code === "Space" || e.key === " " || e.code === "Enter") {
+      if (gameStatus === "START" || gameStatus === "GAMEOVER") {
+        e.preventDefault();
+        resetGame();
+      }
+    }
+  });
+
+  window.addEventListener("keyup", (e) => {
+    if (currentMode !== "game") return;
+    gameKeys[e.code] = false;
+    gameKeys[e.key] = false;
+  });
+
+  // Touch and Click controls for restarting or playing
+  mlCanvas.addEventListener("click", () => {
+    if (currentMode === "game") {
+      if (gameStatus === "START" || gameStatus === "GAMEOVER") {
+        resetGame();
+      }
+    }
+  });
+
+  mlCanvas.addEventListener("touchstart", (e) => {
+    if (currentMode === "game") {
+      if (gameStatus === "START" || gameStatus === "GAMEOVER") {
+        resetGame();
+      } else if (e.touches && e.touches.length > 0) {
+        const rect = mlCanvas.getBoundingClientRect();
+        mlMouse.x = e.touches[0].clientX - rect.left;
+        mlMouse.y = e.touches[0].clientY - rect.top;
+      }
+    }
+  }, { passive: true });
+
+  mlCanvas.addEventListener("touchmove", (e) => {
+    if (currentMode === "game" && e.touches && e.touches.length > 0) {
+      const rect = mlCanvas.getBoundingClientRect();
+      mlMouse.x = e.touches[0].clientX - rect.left;
+      mlMouse.y = e.touches[0].clientY - rect.top;
+    }
+  }, { passive: true });
+
+  function renderNeuralArcadeGame(isLight) {
+    // Background Overlay
+    mlCtx.fillStyle = isLight ? "rgba(241, 245, 249, 0.95)" : "rgba(11, 15, 25, 0.95)";
+    mlCtx.fillRect(0, 0, mlWidth, mlHeight);
+
+    // ---------------------------------------------------
+    // GAME OVERLAY: START SCREEN
+    // ---------------------------------------------------
+    if (gameStatus === "START") {
+      mlCtx.textAlign = "center";
+      mlCtx.font = "900 18px 'Outfit', sans-serif";
+      mlCtx.fillStyle = isLight ? "#0f172a" : "#ffffff";
+      mlCtx.fillText("🎮 NEURAL ARCADE", mlWidth / 2, mlHeight / 2 - 35);
+
+      mlCtx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
+      mlCtx.fillStyle = isLight ? "#475569" : "#94a3b8";
+      mlCtx.fillText("Steer with Mouse / Touch or WASD / Arrow Keys", mlWidth / 2, mlHeight / 2 - 12);
+      mlCtx.fillText("Collect Green Tensors (+10) & Stars (+50) · Dodge Red Malware!", mlWidth / 2, mlHeight / 2 + 10);
+
+      const pulse = Math.sin(Date.now() * 0.005) * 0.15 + 0.85;
+      mlCtx.font = "bold 13px 'Fira Code', monospace";
+      mlCtx.fillStyle = isLight ? `rgba(2, 132, 199, ${pulse})` : `rgba(56, 189, 248, ${pulse})`;
+      mlCtx.fillText("[ CLICK / TAP OR SPACE TO PLAY ]", mlWidth / 2, mlHeight / 2 + 45);
+      return;
+    }
+
+    // ---------------------------------------------------
+    // GAME OVERLAY: GAMEOVER SCREEN
+    // ---------------------------------------------------
+    if (gameStatus === "GAMEOVER") {
+      mlCtx.textAlign = "center";
+      mlCtx.font = "900 20px 'Outfit', sans-serif";
+      mlCtx.fillStyle = "#ef4444";
+      mlCtx.fillText("💥 CORE OVERLOAD", mlWidth / 2, mlHeight / 2 - 30);
+
+      mlCtx.font = "bold 13px 'Fira Code', monospace";
+      mlCtx.fillStyle = isLight ? "#0f172a" : "#ffffff";
+      mlCtx.fillText(`Score: ${gameScore}  |  High Score: ${gameHighScore}`, mlWidth / 2, mlHeight / 2);
+
+      const pulse = Math.sin(Date.now() * 0.005) * 0.15 + 0.85;
+      mlCtx.fillStyle = isLight ? `rgba(79, 70, 229, ${pulse})` : `rgba(168, 85, 247, ${pulse})`;
+      mlCtx.fillText("[ CLICK / TAP OR SPACE TO RESTART ]", mlWidth / 2, mlHeight / 2 + 38);
+      return;
+    }
+
+    // ---------------------------------------------------
+    // ACTIVE PLAYING MECHANICS
+    // ---------------------------------------------------
+    let dx = 0;
+    let dy = 0;
+    if (gameKeys["ArrowUp"] || gameKeys["KeyW"]) dy -= 1;
+    if (gameKeys["ArrowDown"] || gameKeys["KeyS"]) dy += 1;
+    if (gameKeys["ArrowLeft"] || gameKeys["KeyA"]) dx -= 1;
+    if (gameKeys["ArrowRight"] || gameKeys["KeyD"]) dx += 1;
+
+    if (dx !== 0 || dy !== 0) {
+      const len = Math.sqrt(dx * dx + dy * dy);
+      gamePlayer.x += (dx / len) * gamePlayer.speed;
+      gamePlayer.y += (dy / len) * gamePlayer.speed;
+    } else if (mlMouse.x !== null && mlMouse.y !== null) {
+      gamePlayer.x += (mlMouse.x - gamePlayer.x) * 0.18;
+      gamePlayer.y += (mlMouse.y - gamePlayer.y) * 0.18;
+    }
+
+    gamePlayer.x = Math.max(gamePlayer.r + 5, Math.min(mlWidth - gamePlayer.r - 5, gamePlayer.x));
+    gamePlayer.y = Math.max(gamePlayer.r + 5, Math.min(mlHeight - gamePlayer.r - 5, gamePlayer.y));
+
+    // Update Particles
+    for (let p = gameParticles.length - 1; p >= 0; p--) {
+      const pt = gameParticles[p];
+      pt.x += pt.vx;
+      pt.y += pt.vy;
+      pt.alpha -= 0.04;
+      if (pt.alpha <= 0) {
+        gameParticles.splice(p, 1);
+      } else {
+        mlCtx.beginPath();
+        mlCtx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        mlCtx.fillStyle = pt.color;
+        mlCtx.globalAlpha = Math.max(0, pt.alpha);
+        mlCtx.fill();
+        mlCtx.globalAlpha = 1;
+      }
+    }
+
+    // Update & Draw Tensors
+    for (let t = gameTensors.length - 1; t >= 0; t--) {
+      const tensor = gameTensors[t];
+      tensor.pulse += 0.05;
+      const pulseRadius = tensor.r + Math.sin(tensor.pulse) * 1.5;
+
+      mlCtx.beginPath();
+      mlCtx.arc(tensor.x, tensor.y, pulseRadius, 0, Math.PI * 2);
+      mlCtx.fillStyle = tensor.isGold ? "#f59e0b" : "#10b981";
+      mlCtx.fill();
+
+      mlCtx.beginPath();
+      mlCtx.arc(tensor.x, tensor.y, pulseRadius + 3, 0, Math.PI * 2);
+      mlCtx.strokeStyle = tensor.isGold ? "rgba(245, 158, 11, 0.6)" : "rgba(16, 185, 129, 0.6)";
+      mlCtx.lineWidth = 1.2;
+      mlCtx.stroke();
+
+      const pdx = gamePlayer.x - tensor.x;
+      const pdy = gamePlayer.y - tensor.y;
+      const dist = Math.sqrt(pdx * pdx + pdy * pdy);
+
+      if (dist < gamePlayer.r + tensor.r) {
+        const pts = tensor.isGold ? 50 : 10;
+        gameScore += pts;
+        if (tensor.isGold) {
+          gameShield = Math.min(100, gameShield + 15);
+        }
+
+        spawnGameParticles(tensor.x, tensor.y, tensor.isGold ? "#f59e0b" : "#10b981", 12);
+        gameTensors.splice(t, 1);
+        spawnGameTensor();
+
+        if (gameScore >= gameLevel * 60) {
+          gameLevel++;
+          spawnGameAnomaly();
+        }
+
+        if (gameScore > gameHighScore) {
+          gameHighScore = gameScore;
+          localStorage.setItem("neural_arcade_highscore", gameHighScore.toString());
+        }
+      }
+    }
+
+    // Update & Draw Anomalies (Hazards)
+    for (let a = 0; a < gameAnomalies.length; a++) {
+      const anomaly = gameAnomalies[a];
+      anomaly.x += anomaly.vx;
+      anomaly.y += anomaly.vy;
+      anomaly.spin += 0.04;
+
+      if (anomaly.x <= anomaly.r || anomaly.x >= mlWidth - anomaly.r) anomaly.vx *= -1;
+      if (anomaly.y <= anomaly.r || anomaly.y >= mlHeight - anomaly.r) anomaly.vy *= -1;
+
+      mlCtx.save();
+      mlCtx.translate(anomaly.x, anomaly.y);
+      mlCtx.rotate(anomaly.spin);
+
+      mlCtx.beginPath();
+      mlCtx.arc(0, 0, anomaly.r, 0, Math.PI * 2);
+      mlCtx.fillStyle = "#ef4444";
+      mlCtx.fill();
+
+      mlCtx.strokeStyle = "#f87171";
+      mlCtx.lineWidth = 2;
+      for (let s = 0; s < 4; s++) {
+        mlCtx.rotate(Math.PI / 2);
+        mlCtx.beginPath();
+        mlCtx.moveTo(0, 0);
+        mlCtx.lineTo(0, anomaly.r + 4);
+        mlCtx.stroke();
+      }
+      mlCtx.restore();
+
+      const pdx = gamePlayer.x - anomaly.x;
+      const pdy = gamePlayer.y - anomaly.y;
+      const dist = Math.sqrt(pdx * pdx + pdy * pdy);
+
+      if (dist < gamePlayer.r + anomaly.r) {
+        gameShield -= 20;
+        spawnGameParticles(gamePlayer.x, gamePlayer.y, "#ef4444", 14);
+
+        anomaly.vx *= -1.1;
+        anomaly.vy *= -1.1;
+
+        if (gameShield <= 0) {
+          gameShield = 0;
+          gameStatus = "GAMEOVER";
+        }
+      }
+    }
+
+    // Draw Player Drone Core
+    mlCtx.beginPath();
+    mlCtx.arc(gamePlayer.x, gamePlayer.y, gamePlayer.r, 0, Math.PI * 2);
+    mlCtx.fillStyle = isLight ? "#0284c7" : "#38bdf8";
+    mlCtx.fill();
+
+    mlCtx.beginPath();
+    mlCtx.arc(gamePlayer.x, gamePlayer.y, gamePlayer.r + 5, 0, Math.PI * 2);
+    mlCtx.strokeStyle = isLight ? "rgba(79, 70, 229, 0.8)" : "rgba(168, 85, 247, 0.85)";
+    mlCtx.lineWidth = 2;
+    mlCtx.stroke();
+
+    mlCtx.beginPath();
+    mlCtx.arc(gamePlayer.x, gamePlayer.y, 4, 0, Math.PI * 2);
+    mlCtx.fillStyle = "#ffffff";
+    mlCtx.fill();
+
+    // Dynamic Real-Time HUD Stats Update
+    const tensorBadge = document.getElementById("ml-tensor-badge");
+    if (tensorBadge) {
+      tensorBadge.innerHTML = `<i class="bi bi-controller"></i> Score: ${gameScore} | High: ${gameHighScore}`;
+    }
+
+    const lossBadge = document.getElementById("ml-loss-badge");
+    if (lossBadge) {
+      const shieldColor = gameShield > 50 ? "#10b981" : gameShield > 20 ? "#f59e0b" : "#ef4444";
+      lossBadge.style.color = shieldColor;
+      lossBadge.innerHTML = `<i class="bi bi-shield-fill-check"></i> Shield: ${gameShield}%`;
+    }
+
+    const epochEl = document.getElementById("ml-stat-epoch");
+    if (epochEl) epochEl.textContent = `Level ${gameLevel}`;
+
+    const speedEl = document.getElementById("ml-stat-speed");
+    if (speedEl) speedEl.textContent = `60 FPS`;
+
+    const archStat = document.getElementById("ml-stat-arch");
+    if (archStat) archStat.textContent = "Neural Arcade";
+  }
 
   animateML();
 }
