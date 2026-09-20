@@ -7,22 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=80" />
+    <link rel="stylesheet" href="styles.css?v=90" />
   </head>
   <body>
-
     <header class="site-header">
       <nav class="container nav">
         <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
+          <button class="theme-toggle" aria-label="Toggle color mode">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -42,86 +41,81 @@
     </header>
 
     <main id="main-content">
-      <section class="section container page-section skills-page">
-        <div class="skills-header reveal">
-          <p class="eyebrow">Technical Capabilities</p>
-          <h1 class="skills-heading">Engineering <span class="gradient-text">Skills &amp; Toolkit</span></h1>
-          <p class="skills-intro">
-            A comprehensive overview of my software development, computer vision models, cloud infrastructure, and data science capabilities.
-          </p>
-        </div>
+      <section class="section container">
+        <p class="eyebrow">Engineering Matrix</p>
+        <h1>Skills &amp; Technical <span class="gradient-text">Toolkit</span></h1>
+        <p style="color: var(--muted); max-width: 65ch; margin-bottom: 2rem;">
+          Specialized technical proficiencies, machine learning frameworks, cloud infrastructure tools, and backend languages engineered by Priyanshu Raj.
+        </p>
 
-        <div class="skills-cards" aria-label="Skill categories">
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-code-slash" aria-hidden="true"></i> Programming Languages</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">C++</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">JavaScript (ES6+)</span>
-              <span class="skill-tag">TypeScript</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Rust</span>
-              <span class="skill-tag">Bash Scripting</span>
+        <div class="skill-grid">
+          <!-- Domain 1 -->
+          <div class="skill-card">
+            <div class="specialty-icon"><i class="bi bi-eye-fill"></i></div>
+            <h3>Computer Vision &amp; AI</h3>
+            <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
+              Deep learning models, neural network backbones, and video stream object detection.
+            </p>
+            <div class="skill-list">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Convolutional Neural Networks (CNNs)</span>
+              <span class="tech-tag">HOG Feature Extractions</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Keras</span>
+              <span class="tech-tag">Scikit-Learn</span>
             </div>
-          </article>
+          </div>
 
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-eye-fill" aria-hidden="true"></i> Computer Vision &amp; AI</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">OpenCV</span>
-              <span class="skill-tag">Convolutional Neural Networks</span>
-              <span class="skill-tag">HOG Features</span>
-              <span class="skill-tag">Multi-Modal Models</span>
-              <span class="skill-tag">TensorFlow / Keras</span>
+          <!-- Domain 2 -->
+          <div class="skill-card">
+            <div class="specialty-icon"><i class="bi bi-cloud-check-fill"></i></div>
+            <h3>DevOps &amp; Cloud Infrastructure</h3>
+            <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
+              Automated deployment pipelines, cloud hosting, and container orchestration.
+            </p>
+            <div class="skill-list">
+              <span class="tech-tag">AWS Cloud</span>
+              <span class="tech-tag">Jenkins CI/CD</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">GitHub Actions</span>
+              <span class="tech-tag">Linux System Administration</span>
+              <span class="tech-tag">Bash Shell Scripting</span>
             </div>
-          </article>
+          </div>
 
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-cloud-arrow-up-fill" aria-hidden="true"></i> DevOps &amp; Cloud Systems</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">AWS Services</span>
-              <span class="skill-tag">Jenkins CI/CD</span>
-              <span class="skill-tag">GitHub Actions</span>
-              <span class="skill-tag">Docker Containers</span>
-              <span class="skill-tag">Automated Pipelines</span>
+          <!-- Domain 3 -->
+          <div class="skill-card">
+            <div class="specialty-icon"><i class="bi bi-diagram-3-fill"></i></div>
+            <h3>Backend &amp; Data Engineering</h3>
+            <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
+              API development, relational database schemas, and log processing architectures.
+            </p>
+            <div class="skill-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask REST APIs</span>
+              <span class="tech-tag">SQL &amp; Relational Databases</span>
+              <span class="tech-tag">Distributed Log Analytics</span>
+              <span class="tech-tag">Pandas &amp; NumPy</span>
             </div>
-          </article>
+          </div>
 
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-terminal-fill" aria-hidden="true"></i> Linux &amp; System Engineering</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">Distributed Log Generation</span>
-              <span class="skill-tag">Remote Transfer &amp; Alerting</span>
-              <span class="skill-tag">Process Control (ps/top)</span>
-              <span class="skill-tag">Network Diagnostics</span>
-              <span class="skill-tag">Systemd Administration</span>
+          <!-- Domain 4 -->
+          <div class="skill-card">
+            <div class="specialty-icon"><i class="bi bi-code-slash"></i></div>
+            <h3>Core Languages &amp; Web Tech</h3>
+            <p style="font-size: 0.88rem; color: var(--muted); margin: 0 0 1rem;">
+              Foundational programming languages and modern web interface frameworks.
+            </p>
+            <div class="skill-list">
+              <span class="tech-tag">Python 3</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">JavaScript (ES6+)</span>
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">HTML5 &amp; CSS3</span>
+              <span class="tech-tag">Git &amp; GitHub</span>
             </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-layers-fill" aria-hidden="true"></i> Web &amp; API Architecture</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">Vue.js</span>
-              <span class="skill-tag">Python Flask</span>
-              <span class="skill-tag">RESTful APIs</span>
-              <span class="skill-tag">HTML5 / CSS3</span>
-              <span class="skill-tag">Role-Based Authentication</span>
-              <span class="skill-tag">SQLite / Relational Databases</span>
-            </div>
-          </article>
-
-          <article class="skill-card reveal">
-            <h2><i class="bi bi-cpu-fill" aria-hidden="true"></i> Machine Learning &amp; Data Science</h2>
-            <div class="skill-list-tags">
-              <span class="skill-tag">Support Vector Machines (SVM)</span>
-              <span class="skill-tag">Linear &amp; Logistic Regression</span>
-              <span class="skill-tag">Decision Trees &amp; Naive Bayes</span>
-              <span class="skill-tag">Scikit-learn</span>
-              <span class="skill-tag">Pandas &amp; NumPy</span>
-            </div>
-          </article>
+          </div>
         </div>
       </section>
     </main>
@@ -156,7 +150,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=80"></script>
-    <script src="chatbot.js?v=80"></script>
+    <script src="script.js?v=90"></script>
+    <script src="chatbot.js?v=90"></script>
   </body>
 </html>

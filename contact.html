@@ -7,22 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=80" />
+    <link rel="stylesheet" href="styles.css?v=90" />
   </head>
   <body>
-
     <header class="site-header">
       <nav class="container nav">
         <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
+          <button class="theme-toggle" aria-label="Toggle color mode">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -42,60 +41,67 @@
     </header>
 
     <main id="main-content">
-      <section class="section container page-section contact-section">
-        <h1>Let's <span class="gradient-text">Connect</span></h1>
-        <p>Feel free to reach out for software engineering opportunities, AI research collaborations, or technical inquiries.</p>
+      <section class="section container">
+        <p class="eyebrow">Get In Touch</p>
+        <h1>Connect with <span class="gradient-text">Priyanshu Raj</span></h1>
+        <p style="color: var(--muted); max-width: 65ch; margin-bottom: 2rem;">
+          Open to Machine Learning Engineering, Computer Vision, DevOps, and Software Development opportunities. Feel free to reach out via email, phone, or LinkedIn!
+        </p>
 
-        <div class="contact-list" aria-label="Contact links for Priyanshu Raj">
-          <article class="contact-item reveal">
-            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-            <span class="contact-label">Gmail</span>
-            <a class="contact-action" href="mailto:priyanshuanubis33@gmail.com">priyanshuanubis33@gmail.com</a>
-            <button class="copy-btn" type="button" data-copy="priyanshuanubis33@gmail.com">Copy</button>
-          </article>
+        <div class="contact-grid">
+          <!-- Email Card -->
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+            <div style="flex: 1;">
+              <span style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); display: block;">EMAIL ADDRESS</span>
+              <strong style="font-size: 0.95rem; color: var(--text-heading);">priyanshuanubis33@gmail.com</strong>
+            </div>
+            <button class="btn btn-secondary copy-btn" data-copy="priyanshuanubis33@gmail.com" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">
+              <i class="bi bi-clipboard"></i> Copy
+            </button>
+          </div>
 
-          <article class="contact-item reveal">
-            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-            <span class="contact-label">Mobile</span>
-            <a class="contact-action" href="tel:+919990206348">+91 9990206348</a>
-            <button class="copy-btn" type="button" data-copy="+919990206348">Copy</button>
-          </article>
+          <!-- Phone Card -->
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+            <div style="flex: 1;">
+              <span style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); display: block;">MOBILE PHONE</span>
+              <strong style="font-size: 0.95rem; color: var(--text-heading);">+91 9990206348</strong>
+            </div>
+            <button class="btn btn-secondary copy-btn" data-copy="+919990206348" style="padding: 0.4rem 0.75rem; font-size: 0.8rem;">
+              <i class="bi bi-clipboard"></i> Copy
+            </button>
+          </div>
 
-          <article class="contact-item reveal">
-            <i class="bi bi-linkedin" aria-hidden="true"></i>
-            <span class="contact-label">LinkedIn</span>
-            <a
-              class="contact-action"
-              href="https://linkedin.com/in/priyanshu-raj-05633831b"
-              target="_blank"
-              rel="noopener noreferrer"
-              >priyanshu-raj-05633831b <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a
-            >
-          </article>
+          <!-- LinkedIn Link -->
+          <a href="https://linkedin.com/in/priyanshu-raj-05633831b" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon"><i class="bi bi-linkedin"></i></div>
+            <div style="flex: 1;">
+              <span style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); display: block;">LINKEDIN PROFILE</span>
+              <strong style="font-size: 0.95rem; color: var(--text-heading);">Priyanshu Raj</strong>
+            </div>
+            <i class="bi bi-arrow-up-right" style="color: var(--muted);"></i>
+          </a>
 
-          <article class="contact-item reveal">
-            <i class="bi bi-github" aria-hidden="true"></i>
-            <span class="contact-label">GitHub</span>
-            <a
-              class="contact-action"
-              href="https://github.com/priyanshuanubis"
-              target="_blank"
-              rel="noopener noreferrer"
-              >priyanshuanubis <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a
-            >
-          </article>
+          <!-- GitHub Link -->
+          <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon"><i class="bi bi-github"></i></div>
+            <div style="flex: 1;">
+              <span style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); display: block;">GITHUB REPOSITORY</span>
+              <strong style="font-size: 0.95rem; color: var(--text-heading);">@priyanshuanubis</strong>
+            </div>
+            <i class="bi bi-arrow-up-right" style="color: var(--muted);"></i>
+          </a>
 
-          <article class="contact-item reveal">
-            <i class="bi bi-instagram" aria-hidden="true"></i>
-            <span class="contact-label">Instagram</span>
-            <a
-              class="contact-action"
-              href="https://www.instagram.com/priyanshuanubis?igsh=MTlmbnZ1bDB3cDIzNg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              >priyanshuanubis <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a
-            >
-          </article>
+          <!-- Instagram Link -->
+          <a href="https://www.instagram.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon"><i class="bi bi-instagram"></i></div>
+            <div style="flex: 1;">
+              <span style="font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); display: block;">INSTAGRAM</span>
+              <strong style="font-size: 0.95rem; color: var(--text-heading);">@priyanshuanubis</strong>
+            </div>
+            <i class="bi bi-arrow-up-right" style="color: var(--muted);"></i>
+          </a>
         </div>
       </section>
     </main>
@@ -130,7 +136,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=80"></script>
-    <script src="chatbot.js?v=80"></script>
+    <script src="script.js?v=90"></script>
+    <script src="chatbot.js?v=90"></script>
   </body>
 </html>

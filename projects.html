@@ -7,22 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=80" />
+    <link rel="stylesheet" href="styles.css?v=90" />
   </head>
   <body>
-
     <header class="site-header">
       <nav class="container nav">
         <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
+          <button class="theme-toggle" aria-label="Toggle color mode">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -42,187 +41,215 @@
     </header>
 
     <main id="main-content">
-      <section class="section container page-section">
-        <h1>Featured <span class="gradient-text">Projects</span></h1>
-        <p class="section-note">
-          A showcase of real-world software, AI models, cloud deployment pipelines, and computer vision systems built with clean architecture and scalable code.
+      <section class="section container">
+        <p class="eyebrow">Engineering Repository</p>
+        <h1>Featured Systems &amp; <span class="gradient-text">Projects</span></h1>
+        <p style="color: var(--muted); max-width: 65ch; margin-bottom: 2rem;">
+          Production machine learning models, computer vision detection systems, automated DevOps cloud pipelines, and web backend applications built by Priyanshu Raj.
         </p>
 
-        <!-- Flagship Project Spotlight Banner -->
-        <div class="flagship-banner reveal">
-          <div class="flagship-badge"><i class="bi bi-star-fill" aria-hidden="true"></i> Flagship Infrastructure Project</div>
-          <h2>Automated CI/CD Deployment Pipeline</h2>
-          <p>
-            An automated continuous integration &amp; deployment pipeline linking GitHub, Jenkins, and AWS cloud infrastructure for automated testing, artifact creation, and zero-downtime server deployments.
-          </p>
-          <div class="tech-tags">
-            <span class="tag-pill">AWS</span>
-            <span class="tag-pill">Jenkins</span>
-            <span class="tag-pill">GitHub Actions</span>
-            <span class="tag-pill">DevOps</span>
-            <span class="tag-pill">Shell</span>
-          </div>
-          <a class="project-link" href="https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer">
-            Explore Flagship Repo <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-          </a>
-        </div>
-
-        <!-- Project Toolbar: Search & Filter -->
-        <div class="project-toolbar">
-          <div class="search-flex">
-            <div class="search-wrap">
-              <i class="bi bi-search" aria-hidden="true"></i>
-              <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, description, or tech stack..." aria-label="Search projects" />
-            </div>
-            <span id="project-count" class="count-badge">8 Projects</span>
+        <!-- Category Filter & Search Bar -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 2rem; background: var(--surface); border: 1px solid var(--border); padding: 0.85rem 1.2rem; border-radius: var(--card-radius);">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            <button class="chip-btn active filter-btn" data-filter="all">All Systems</button>
+            <button class="chip-btn filter-btn" data-filter="ai">AI &amp; Computer Vision</button>
+            <button class="chip-btn filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
+            <button class="chip-btn filter-btn" data-filter="web">Full-Stack &amp; Data</button>
           </div>
 
-          <div class="project-filters" aria-label="Project filter categories">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="ai-cv">AI &amp; Computer Vision</button>
-            <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
-            <button class="filter-btn" data-filter="systems-web">Systems &amp; Web</button>
+          <div style="position: relative; min-width: 240px;">
+            <input
+              type="text"
+              id="project-search"
+              placeholder="Search technologies..."
+              style="width: 100%; background: var(--surface-soft); border: 1px solid var(--border); color: var(--text-heading); padding: 0.45rem 0.85rem 0.45rem 2.2rem; border-radius: 8px; font-family: inherit; font-size: 0.86rem;"
+            />
+            <i class="bi bi-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 0.85rem;"></i>
           </div>
         </div>
 
+        <div id="project-count" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem;">
+          Showing 8 Systems
+        </div>
+
+        <!-- Project Grid -->
         <div class="project-grid">
-          <!-- 1. Automated CI/CD Pipeline -->
-          <article class="project-card reveal" data-category="devops">
-            <h3>Automated CI/CD Deployment Pipeline</h3>
-            <p>
-              Automated CI/CD deployment pipeline connecting GitHub, Jenkins, and AWS cloud infrastructure for rapid, reliable software deployment.
+          <!-- System 1 -->
+          <article class="project-card" data-category="ai">
+            <div class="project-header">
+              <span class="project-badge">Computer Vision</span>
+              <span class="project-metrics">PyTorch · OpenCV</span>
+            </div>
+            <h3>HandGuard-CV: Driver Safety Detection</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Real-time deep learning computer vision system utilizing PyTorch and OpenCV to detect driver hand position and distraction states in video streams.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">AWS</span>
-              <span class="tag-pill">Jenkins</span>
-              <span class="tag-pill">GitHub Actions</span>
-              <span class="tag-pill">DevOps</span>
-              <span class="tag-pill">Shell</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">CNN</span>
+              <span class="tech-tag">Python</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 2. HandGuardCV -->
-          <article class="project-card reveal" data-category="ai-cv">
-            <h3>HandGuardCV</h3>
-            <p>
-              Real-time virtual boundary protection and workspace perimeter safety system engineered using classical computer vision algorithms in Python &amp; OpenCV.
+          <!-- System 2 -->
+          <article class="project-card" data-category="ai">
+            <div class="project-header">
+              <span class="project-badge">Deep Learning</span>
+              <span class="project-metrics">Real-Time CV</span>
+            </div>
+            <h3>Traffic Vision AI Analytics</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Automated vehicle flow classification and multi-object detection pipeline for intelligent traffic monitoring.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">Python</span>
-              <span class="tag-pill">OpenCV</span>
-              <span class="tag-pill">Computer Vision</span>
-              <span class="tag-pill">NumPy</span>
+              <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">YOLO</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/HandGuardCV" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 3. Traffic Sign Recognition Benchmark -->
-          <article class="project-card reveal" data-category="ai-cv">
-            <h3>Traffic Sign Recognition Benchmark</h3>
-            <p>
-              German Traffic Sign Recognition Benchmark (GTSRB) classification pipeline evaluating PyTorch Deep CNNs against HOG feature extractions and SVM baselines.
+          <!-- System 3 -->
+          <article class="project-card" data-category="devops">
+            <div class="project-header">
+              <span class="project-badge">DevOps &amp; Cloud</span>
+              <span class="project-metrics">AWS &amp; Jenkins</span>
+            </div>
+            <h3>Distributed Log Aggregator</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              High-throughput log processing pipeline deployed on AWS infrastructure with automated Jenkins CI/CD integration.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">PyTorch</span>
-              <span class="tag-pill">CNN</span>
-              <span class="tag-pill">OpenCV</span>
-              <span class="tag-pill">HOG + SVM</span>
-              <span class="tag-pill">Python</span>
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">Jenkins</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Docker</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 4. Distributed Log Monitoring System -->
-          <article class="project-card reveal" data-category="systems-web">
-            <h3>Distributed Log Monitoring System</h3>
-            <p>
-              Distributed system architecture for real-time log generation, secure remote transfer, centralized log aggregation, and automated incident alerting.
+          <!-- System 4 -->
+          <article class="project-card" data-category="ai">
+            <div class="project-header">
+              <span class="project-badge">Medical AI</span>
+              <span class="project-metrics">ResNet-50</span>
+            </div>
+            <h3>Pneumonia Chest X-Ray Net</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Convolutional Neural Network model for medical image classification and binary diagnosis from chest radiography.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">JavaScript</span>
-              <span class="tag-pill">Node.js</span>
-              <span class="tag-pill">Bash</span>
-              <span class="tag-pill">System Logging</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">CNN</span>
+              <span class="tech-tag">Medical AI</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/log-monitoring-system" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 5. Lightweight Multi-Modal Driver Distraction Detection -->
-          <article class="project-card reveal" data-category="ai-cv">
-            <h3>Driver Distraction Detection System</h3>
-            <p>
-              Lightweight, multi-modal neural network architecture designed for real-time driver monitoring and distraction detection under edge constraints.
+          <!-- System 5 -->
+          <article class="project-card" data-category="web">
+            <div class="project-header">
+              <span class="project-badge">Full-Stack</span>
+              <span class="project-metrics">Vue &amp; Flask</span>
+            </div>
+            <h3>Smart Parking Slot Allocation API</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Backend API and dynamic management interface for automated urban parking slot reservation and spot availability tracking.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">PyTorch</span>
-              <span class="tag-pill">Deep Learning</span>
-              <span class="tag-pill">Computer Vision</span>
-              <span class="tag-pill">Multi-Modal</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Vue.js</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/Lightweight-Multi-Modal-Driver-Distraction-Detection-System" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 6. Placement Portal App -->
-          <article class="project-card reveal" data-category="systems-web">
-            <h3>Placement Portal App</h3>
-            <p>
-              Full-stack campus placement management application featuring role-based authentication, student tracking, company job postings, and REST APIs.
+          <!-- System 6 -->
+          <article class="project-card" data-category="web">
+            <div class="project-header">
+              <span class="project-badge">Data Engineering</span>
+              <span class="project-metrics">Python Analytics</span>
+            </div>
+            <h3>Predictive Placement Analytics</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Statistical predictive modeling and student career placement outcome classifier analyzing academic metrics.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">JavaScript</span>
-              <span class="tag-pill">Vue.js</span>
-              <span class="tag-pill">Python Flask</span>
-              <span class="tag-pill">SQLite</span>
-              <span class="tag-pill">REST APIs</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Scikit-Learn</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/Placement-Portal-App" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 7. Pneumonia Detection CNN -->
-          <article class="project-card reveal" data-category="ai-cv">
-            <h3>Pneumonia Detection CNN</h3>
-            <p>
-              Convolutional Neural Network model trained for automated diagnosis and binary classification of pneumonia from chest X-ray medical imaging.
+          <!-- System 7 -->
+          <article class="project-card" data-category="ai">
+            <div class="project-header">
+              <span class="project-badge">Computer Vision</span>
+              <span class="project-metrics">Edge CV</span>
+            </div>
+            <h3>Real-Time HOG Gesture Recognition</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Histogram of Oriented Gradients (HOG) feature extraction model for low-latency hand gesture classification.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">TensorFlow</span>
-              <span class="tag-pill">Keras</span>
-              <span class="tag-pill">CNN</span>
-              <span class="tag-pill">Medical Imaging</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Machine Learning</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/pneumonia-detection-cnn" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
 
-          <!-- 8. Vehicle Parking App -->
-          <article class="project-card reveal" data-category="systems-web">
-            <h3>Vehicle Parking App</h3>
-            <p>
-              A parking management application streamlining slot tracking, vehicle entry/exit handling, real-time status updates, and operational analytics.
+          <!-- System 8 -->
+          <article class="project-card" data-category="devops">
+            <div class="project-header">
+              <span class="project-badge">DevOps &amp; Cloud</span>
+              <span class="project-metrics">Docker &amp; AWS</span>
+            </div>
+            <h3>Microservice CI/CD Deployment Engine</h3>
+            <p style="font-size: 0.9rem; color: var(--muted);">
+              Automated container orchestration and Jenkins deployment setup for multi-service web backend applications.
             </p>
             <div class="tech-tags">
-              <span class="tag-pill">Python</span>
-              <span class="tag-pill">Flask</span>
-              <span class="tag-pill">SQLite</span>
-              <span class="tag-pill">Bootstrap / CSS</span>
+              <span class="tech-tag">Jenkins</span>
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">Docker</span>
             </div>
-            <a class="project-link" href="https://github.com/priyanshuanubis/Vehicle-Parking-App" target="_blank" rel="noopener noreferrer">
-              View Repository <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://github.com/priyanshuanubis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="bi bi-github"></i> GitHub Repository
+              </a>
+            </div>
           </article>
         </div>
       </section>
@@ -258,7 +285,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=80"></script>
-    <script src="chatbot.js?v=80"></script>
+    <script src="script.js?v=90"></script>
+    <script src="chatbot.js?v=90"></script>
   </body>
 </html>

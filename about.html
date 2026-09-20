@@ -7,22 +7,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=80" />
+    <link rel="stylesheet" href="styles.css?v=90" />
   </head>
   <body>
-
     <header class="site-header">
       <nav class="container nav">
         <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
+          <button class="theme-toggle" aria-label="Toggle color mode">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -42,126 +41,106 @@
     </header>
 
     <main id="main-content">
-      <section class="section container page-section about-layout">
-        <div class="portrait-wrap reveal">
-          <img
-            class="portrait"
-            src="assets/portrait.jpg"
-            alt="Portrait of Priyanshu Raj"
-          />
-        </div>
-
-        <div class="about-columns">
-          <article class="about-card reveal">
+      <section class="section container">
+        <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 2.5rem; align-items: start;">
+          <div>
+            <p class="eyebrow">Biography &amp; Background</p>
             <h1>About <span class="gradient-text">Priyanshu Raj</span></h1>
-            
-            <div class="personal-badges-row">
-              <span class="badge-pill"><i class="bi bi-person-fill"></i> Male · 20 Years Old</span>
-              <span class="badge-pill"><i class="bi bi-mortarboard-fill"></i> IIT Madras (BS Data Science)</span>
-              <span class="badge-pill"><i class="bi bi-geo-alt-fill"></i> India</span>
-              <span class="badge-pill"><i class="bi bi-briefcase-fill"></i> Open to Software, CV &amp; DevOps Roles</span>
+
+            <div class="status-row" style="margin: 1.2rem 0 1.6rem;">
+              <span class="status-pill"><i class="bi bi-person-fill"></i> Male · Age 23</span>
+              <span class="status-pill"><i class="bi bi-mortarboard-fill"></i> IIT Madras (BS Data Science)</span>
+              <span class="status-pill"><i class="bi bi-geo-alt-fill"></i> India</span>
+              <span class="status-pill"><i class="bi bi-briefcase-fill"></i> Open to ML &amp; DevOps Roles</span>
             </div>
 
-            <p>
-              I build practical, intelligent, and visually polished applications with a strong focus on performance, reliability, and maintainable architecture.
+            <p style="font-size: 1.05rem; color: var(--text); line-height: 1.7;">
+              I build reliable machine learning models, production computer vision pipelines, and automated cloud infrastructure with a focus on high throughput and clean system architecture.
             </p>
-            <p>
-              Currently pursuing a BS in Data Science at IIT Madras, my technical work spans computer vision &amp; PyTorch deep learning, cloud deployment automation (AWS &amp; Jenkins), distributed system monitoring, and full-stack web engineering.
+            <p style="color: var(--muted); line-height: 1.7;">
+              Currently pursuing a Bachelor of Science (BS) in Data Science &amp; Applications at the Indian Institute of Technology Madras (IIT Madras, 2024–Present). My technical expertise spans PyTorch deep neural networks, OpenCV video stream detection, AWS cloud infrastructure, Jenkins CI/CD automation, and distributed logging backend pipelines.
             </p>
 
-            <!-- Connected Journey Timeline Roadmap -->
-            <div class="timeline" aria-label="Journey Timeline">
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <span>2024 - Present</span>
-                <h3>BS in Data Science @ IIT Madras</h3>
-                <p>Enrolled in the prestigious BS program, mastering machine learning algorithms, statistical data analysis, and computer science foundations.</p>
+            <h2 style="margin-top: 2.4rem;">Academic Journey &amp; Milestones</h2>
+            <div class="timeline-grid" style="grid-template-columns: 1fr;">
+              <div class="timeline-card">
+                <div class="timeline-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                <span class="project-metrics">2024 - Present (Expected Completion 2027)</span>
+                <h3>BS in Data Science &amp; Applications @ IIT Madras</h3>
+                <p style="color: var(--muted); font-size: 0.92rem; margin: 0.4rem 0 0;">
+                  Studying statistical machine learning algorithms, deep learning neural network architectures, data structures, and computer science foundations at Indian Institute of Technology Madras.
+                </p>
               </div>
 
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <span>2024 - Present</span>
-                <h3>AI &amp; Computer Vision Systems</h3>
-                <p>Engineering real-time computer vision models, deep neural network architectures, and multi-modal intelligence systems.</p>
+              <div class="timeline-card">
+                <div class="timeline-icon"><i class="bi bi-cpu-fill"></i></div>
+                <span class="project-metrics">2024 - Present</span>
+                <h3>Computer Vision &amp; Deep Neural Networks</h3>
+                <p style="color: var(--muted); font-size: 0.92rem; margin: 0.4rem 0 0;">
+                  Engineered real-time computer vision models including HandGuard-CV driver safety detection, Traffic Vision AI flow classifiers, and Chest X-Ray diagnostic CNNs using PyTorch and OpenCV.
+                </p>
               </div>
 
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <span>2025 - Present</span>
-                <h3>DevOps &amp; Cloud Infrastructure</h3>
-                <p>Designing automated CI/CD deployment pipelines integrating GitHub Actions, Jenkins, and AWS cloud infrastructure.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Certifications & Credentials Section -->
-          <article class="cert-card reveal" aria-label="Certifications & Credentials">
-            <h2><i class="bi bi-patch-check-fill" aria-hidden="true"></i> Certifications &amp; Credentials</h2>
-            <div class="cert-grid">
-              <div class="cert-item">
-                <span class="cert-issuer">IIT Madras</span>
-                <h3 class="cert-title">BS in Data Science &amp; Applications Credentials</h3>
-                <p class="cert-desc">Foundational &amp; Diploma level coursework covering Machine Learning, Deep Learning, SQL, and Software Engineering.</p>
-              </div>
-
-              <div class="cert-item">
-                <span class="cert-issuer">Deep Learning Specialization</span>
-                <h3 class="cert-title">Computer Vision &amp; PyTorch Certification</h3>
-                <p class="cert-desc">Real-time object classification, CNN architectures, multi-modal feature extractors, and OpenCV vision pipelines.</p>
-              </div>
-
-              <div class="cert-item">
-                <span class="cert-issuer">AWS &amp; DevOps Pipelines</span>
-                <h3 class="cert-title">Cloud Infrastructure &amp; Jenkins Automation</h3>
-                <p class="cert-desc">Continuous integration and continuous deployment pipelines linking GitHub Actions, Jenkins server, and AWS EC2/S3.</p>
-              </div>
-
-              <div class="cert-item">
-                <span class="cert-issuer">Data Science &amp; Systems</span>
-                <h3 class="cert-title">Machine Learning &amp; Statistical Modeling</h3>
-                <p class="cert-desc">Applied machine learning using Scikit-Learn, Pandas, NumPy, Support Vector Machines (SVM), and Distributed System Logging.</p>
+              <div class="timeline-card">
+                <div class="timeline-icon"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+                <span class="project-metrics">2025 - Present</span>
+                <h3>AWS Cloud &amp; Automated CI/CD Pipelines</h3>
+                <p style="color: var(--muted); font-size: 0.92rem; margin: 0.4rem 0 0;">
+                  Designed automated DevOps pipelines integrating Jenkins CI/CD, AWS cloud infrastructure, Docker containerization, and Flask web API backends.
+                </p>
               </div>
             </div>
-          </article>
+          </div>
 
-          <!-- Extracurricular Experience Section -->
-          <article class="extracurricular-card reveal" aria-label="Extracurricular Experience">
-            <h2><i class="bi bi-trophy-fill" aria-hidden="true"></i> Extracurricular Experience &amp; Leadership</h2>
-            <div class="extracurricular-list">
-              <div class="extra-item">
-                <div class="extra-icon"><i class="bi bi-code-square"></i></div>
-                <div class="extra-info">
-                  <h3>Tech Hackathons &amp; Open Source</h3>
-                  <p>Active contributor and project lead in open-source developer communities building autonomous AI tools and computer vision prototypes.</p>
-                </div>
-              </div>
-
-              <div class="extra-item">
-                <div class="extra-icon"><i class="bi bi-cpu-fill"></i></div>
-                <div class="extra-info">
-                  <h3>Hardware &amp; Edge IoT Tinkering</h3>
-                  <p>Hands-on experimentation with Raspberry Pi and edge compute modules for embedded computer vision and real-time safety monitoring.</p>
-                </div>
-              </div>
-
-              <div class="extra-item">
-                <div class="extra-icon"><i class="bi bi-journal-code"></i></div>
-                <div class="extra-info">
-                  <h3>Competitive Problem Solving &amp; Paper Reading</h3>
-                  <p>Regular problem solving in C++ and Python, along with active reading of research preprints (arXiv) on CV and transformer models.</p>
-                </div>
-              </div>
+          <div>
+            <div class="portrait-wrap" style="margin-bottom: 2rem; width: 100%;">
+              <img
+                class="portrait"
+                src="assets/portrait.jpg"
+                alt="Portrait of Priyanshu Raj"
+              />
             </div>
-          </article>
 
-          <aside class="education-card reveal" aria-label="Education">
-            <h2>Education</h2>
-            <div class="education-item">
-              <h3>BS in Data Science</h3>
-              <p><a class="inline-link" href="https://www.iitm.ac.in/" target="_blank" rel="noopener noreferrer">IIT Madras <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></p>
-              <span>Expected Completion: 2027</span>
+            <!-- Certifications Box -->
+            <div class="timeline-card" style="margin-bottom: 1.5rem;">
+              <div class="timeline-icon"><i class="bi bi-patch-check-fill"></i></div>
+              <h3>Certifications &amp; Credentials</h3>
+              <ul style="list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-check-circle-fill" style="color: var(--primary); margin-top: 2px;"></i>
+                  <span><strong>IIT Madras Credentials:</strong> BS Data Science &amp; Applications</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-check-circle-fill" style="color: var(--primary); margin-top: 2px;"></i>
+                  <span><strong>Computer Vision &amp; PyTorch:</strong> Neural Network Architecture &amp; OpenCV Stream Analytics</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-check-circle-fill" style="color: var(--primary); margin-top: 2px;"></i>
+                  <span><strong>AWS Infrastructure &amp; Jenkins:</strong> Cloud Deployment Pipelines &amp; Docker Automation</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-check-circle-fill" style="color: var(--primary); margin-top: 2px;"></i>
+                  <span><strong>Applied Data Science:</strong> Predictive Modeling &amp; Machine Learning Systems</span>
+                </li>
+              </ul>
             </div>
-          </aside>
+
+            <!-- Extracurricular Leadership -->
+            <div class="timeline-card">
+              <div class="timeline-icon"><i class="bi bi-trophy-fill"></i></div>
+              <h3>Leadership &amp; Extracurriculars</h3>
+              <ul style="list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-record-fill" style="color: var(--primary); margin-top: 4px; font-size: 0.7rem;"></i>
+                  <span><strong>Football Team Captain:</strong> Led collegiate inter-hostel football squad in tournaments.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text);">
+                  <i class="bi bi-record-fill" style="color: var(--primary); margin-top: 4px; font-size: 0.7rem;"></i>
+                  <span><strong>Technical Event Coordinator:</strong> Organised coding hackathons, algorithm workshops, and tech seminars.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -196,7 +175,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=80"></script>
-    <script src="chatbot.js?v=80"></script>
+    <script src="script.js?v=90"></script>
+    <script src="chatbot.js?v=90"></script>
   </body>
 </html>
