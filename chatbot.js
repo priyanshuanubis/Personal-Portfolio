@@ -107,18 +107,26 @@
   // 2. DYNAMICALLY LOAD KNOWLEDGE BASE FROM TEXT FILE
   // -------------------------------------------------------------
   async function loadKnowledgeBase() {
-    try {
-      const response = await fetch("priyanshu_knowledge_base.txt?t=" + Date.now());
-      if (response.ok) {
-        knowledgeBaseRaw = await response.text();
-        isLoaded = true;
-        console.log("Priyanshu AI: Knowledge base loaded successfully.");
-      } else {
-        console.warn("Priyanshu AI: Unable to fetch priyanshu_knowledge_base.txt.");
+    const paths = [
+      "priyanshu_knowledge_base.txt?t=" + Date.now(),
+      "./priyanshu_knowledge_base.txt?t=" + Date.now(),
+      "/priyanshu_knowledge_base.txt?t=" + Date.now()
+    ];
+
+    for (const path of paths) {
+      try {
+        const response = await fetch(path);
+        if (response.ok) {
+          knowledgeBaseRaw = await response.text();
+          isLoaded = true;
+          console.log("Priyanshu AI: Knowledge base loaded successfully from " + path);
+          return;
+        }
+      } catch (err) {
+        // try next path
       }
-    } catch (err) {
-      console.error("Priyanshu AI: Error loading knowledge base.", err);
     }
+    console.warn("Priyanshu AI: Operating with built-in knowledge base engine.");
   }
 
   // -------------------------------------------------------------

@@ -74,30 +74,15 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Reveal-on-scroll Intersection Observer (Excludes hero section components so they render instantly without delay)
+// Reveal-on-scroll (All elements rendered visibly by default)
 const revealTargets = document.querySelectorAll(
   ".project-card, .skill-card, .contact-item, .about-card, .education-card, .highlight-card, .flagship-banner, .timeline-item"
 );
 
-revealTargets.forEach((el) => el.classList.add("reveal"));
-
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  revealTargets.forEach((el) => io.observe(el));
-} else {
-  revealTargets.forEach((el) => el.classList.add("in"));
-}
+revealTargets.forEach((el) => {
+  el.classList.add("reveal");
+  el.classList.add("in");
+});
 
 // Theme shortcut: 'T' key
 window.addEventListener("keydown", (event) => {
