@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,14 +14,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=70" />
+    <link rel="stylesheet" href="styles.css?v=80" />
   </head>
   <body>
     <header class="site-header">
       <nav class="container nav">
         <a class="brand" href="index.html"><span class="brand-dot"></span> Priyanshu Raj</a>
         <div class="nav-actions">
-          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="true">
+          <button class="theme-toggle" aria-label="Toggle color mode" aria-pressed="false">
             <span class="toggle-track">
               <span class="toggle-icon toggle-sun" aria-hidden="true">☀</span>
               <span class="toggle-icon toggle-moon" aria-hidden="true">☾</span>
@@ -58,26 +58,6 @@
             <a class="btn btn-primary" href="projects.html"><i class="bi bi-code-square" aria-hidden="true"></i> View Engineering Systems</a>
             <a class="btn btn-secondary" href="contact.html"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Contact Priyanshu</a>
           </div>
-
-          <!-- Key Metrics Counter Bar -->
-          <div class="stats-bar" aria-label="Statistics">
-            <div class="stat-item">
-              <div class="stat-number">8+</div>
-              <div class="stat-label">Production Repos</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">99.8%</div>
-              <div class="stat-label">Model Accuracy</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">12.4ms</div>
-              <div class="stat-label">Inference Speed</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">'27</div>
-              <div class="stat-label">IIT Madras</div>
-            </div>
-          </div>
         </div>
 
         <div class="hero-visual">
@@ -87,44 +67,6 @@
               src="assets/portrait.jpg"
               alt="Portrait of Priyanshu Raj"
             />
-          </div>
-
-          <!-- Interactive Engineering Code Terminal -->
-          <div class="code-terminal">
-            <div class="terminal-header">
-              <div class="terminal-controls">
-                <span class="terminal-dot dot-red"></span>
-                <span class="terminal-dot dot-yellow"></span>
-                <span class="terminal-dot dot-green"></span>
-              </div>
-              <div class="terminal-tabs">
-                <button class="terminal-tab active" data-tab="inference">inference_pipeline.py</button>
-                <button class="terminal-tab" data-tab="architecture">model_arch.py</button>
-                <button class="terminal-tab" data-tab="deploy">deploy.sh</button>
-              </div>
-            </div>
-
-            <div class="terminal-body" id="terminal-body">
-              <div class="terminal-line"><span class="syntax-kw">import</span> torch</div>
-              <div class="terminal-line"><span class="syntax-kw">import</span> cv2</div>
-              <div class="terminal-line"><span class="syntax-kw">from</span> vision_engine <span class="syntax-kw">import</span> HandGuardModel</div>
-              <div class="terminal-line">&nbsp;</div>
-              <div class="terminal-line"><span class="syntax-cm"># Load pretrained ResNet-50 backbone</span></div>
-              <div class="terminal-line">model = HandGuardModel(num_classes=<span class="syntax-num">4</span>)</div>
-              <div class="terminal-line">model.load_state_dict(torch.load(<span class="syntax-str">'best_weights.pth'</span>))</div>
-              <div class="terminal-line">model.eval().to(<span class="syntax-str">'cuda'</span>)</div>
-              <div class="terminal-line">&nbsp;</div>
-              <div class="terminal-line"><span class="syntax-kw">def</span> <span class="syntax-fn">run_inference</span>(video_stream):</div>
-              <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;tensor = preprocess_frame(video_stream)</div>
-              <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">with</span> torch.no_grad():</div>
-              <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output = model(tensor)</div>
-              <div class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-kw">return</span> parse_detections(output)</div>
-            </div>
-
-            <div class="terminal-footer">
-              <span style="color: #94a3b8;"><i class="bi bi-cpu-fill" style="color: #38bdf8;"></i> PyTorch · CUDA 12.1</span>
-              <button class="terminal-run-btn" id="terminal-run-btn"><i class="bi bi-play-fill"></i> Run Model Test</button>
-            </div>
           </div>
         </div>
       </section>
@@ -142,7 +84,7 @@
           <article class="project-card flagship-card">
             <div class="project-header">
               <span class="project-badge">Computer Vision</span>
-              <span class="project-metrics">99.8% Acc · 12.4ms</span>
+              <span class="project-metrics">PyTorch · OpenCV</span>
             </div>
             <h3>HandGuard-CV: Driver Safety Detection</h3>
             <p>
@@ -261,7 +203,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=70"></script>
-    <script src="chatbot.js?v=70"></script>
+    <script src="script.js?v=80"></script>
+    <script src="chatbot.js?v=80"></script>
   </body>
 </html>

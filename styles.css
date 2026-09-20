@@ -1,7 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Editorial Slate Dark Theme (Professional ML Engineer & Software Architect) */
+  /* Crisp Professional Light Theme (Default) */
+  --bg: #fafafa;
+  --bg-secondary: #f4f6fb;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.95);
+  --surface-hover: #ffffff;
+  --surface-soft: #f1f5f9;
+  --text-heading: #0f172a;
+  --text: #334155;
+  --muted: #64748b;
+  --primary: #0284c7;
+  --primary-glow: rgba(2, 132, 199, 0.15);
+  --secondary: #4f46e5;
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+  --accent-glow: radial-gradient(circle, rgba(2, 132, 199, 0.1) 0%, transparent 70%);
+  --border: #e2e8f0;
+  --border-hover: #0284c7;
+  --header-bg: rgba(255, 255, 255, 0.94);
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  --glass-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  --card-radius: 14px;
+  --tag-bg: #f1f5f9;
+  --tag-text: #0f172a;
+  --tag-border: #cbd5e1;
+  --flagship-bg: #ffffff;
+  --code-bg: #0f172a;
+  --code-header-bg: #1e293b;
+  --code-text: #f8fafc;
+  --code-title: #94a3b8;
+}
+
+[data-theme="dark"] {
+  /* Refined Slate Dark Theme (Secondary) */
   --bg: #090d16;
   --bg-secondary: #0d121e;
   --surface: #121826;
@@ -21,7 +53,6 @@
   --header-bg: rgba(9, 13, 22, 0.92);
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-  --card-radius: 16px;
   --tag-bg: #172033;
   --tag-text: #e5e7eb;
   --tag-border: rgba(255, 255, 255, 0.1);
@@ -29,37 +60,6 @@
   --code-bg: #0b0f19;
   --code-header-bg: #141c2e;
   --code-text: #f1f5f9;
-  --code-title: #94a3b8;
-}
-
-[data-theme="light"] {
-  /* Refined Modern Light Theme */
-  --bg: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --surface: #ffffff;
-  --surface-glass: rgba(255, 255, 255, 0.96);
-  --surface-hover: #f8fafc;
-  --surface-soft: #f1f5f9;
-  --text-heading: #0f172a;
-  --text: #334155;
-  --muted: #64748b;
-  --primary: #0284c7;
-  --primary-glow: rgba(2, 132, 199, 0.15);
-  --secondary: #4f46e5;
-  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-  --accent-glow: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 70%);
-  --border: #e2e8f0;
-  --border-hover: #0284c7;
-  --header-bg: rgba(255, 255, 255, 0.94);
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  --glass-shadow: 0 8px 25px rgba(31, 38, 135, 0.05);
-  --tag-bg: #f1f5f9;
-  --tag-text: #0f172a;
-  --tag-border: #cbd5e1;
-  --flagship-bg: #ffffff;
-  --code-bg: #0f172a;
-  --code-header-bg: #1e293b;
-  --code-text: #f8fafc;
   --code-title: #94a3b8;
 }
 
@@ -371,131 +371,31 @@ h2 {
 
 .hero-visual {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Interactive Engineering Code Terminal (Professional ML Showcase) */
-.code-terminal {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+.portrait-wrap {
+  position: relative;
+  width: min(340px, 100%);
+  border-radius: var(--card-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-}
-
-.terminal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 1rem;
-  background: var(--code-header-bg);
-  border-bottom: 1px solid var(--border);
-}
-
-.terminal-controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.terminal-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-red { background: #ef4444; }
-.dot-yellow { background: #f59e0b; }
-.dot-green { background: #10b981; }
-
-.terminal-tabs {
-  display: flex;
-  gap: 0.35rem;
-}
-
-.terminal-tab {
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.76rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.terminal-tab:hover {
-  color: var(--text-heading);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.terminal-tab.active {
-  background: rgba(56, 189, 248, 0.12);
-  color: var(--primary);
-  font-weight: 600;
-  border: 1px solid rgba(56, 189, 248, 0.25);
-}
-
-.terminal-body {
-  padding: 1.1rem;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.84rem;
-  line-height: 1.65;
-  color: var(--code-text);
-  overflow-x: auto;
-  min-height: 190px;
-}
-
-.syntax-kw { color: #f472b6; font-weight: 600; }
-.syntax-fn { color: #38bdf8; }
-.syntax-str { color: #34d399; }
-.syntax-cm { color: #6b7280; font-style: italic; }
-.syntax-num { color: #fbbf24; }
-
-.terminal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid var(--border);
-  padding: 0.65rem 1rem;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.78rem;
-}
-
-.terminal-run-btn {
-  background: var(--surface-soft);
   border: 1px solid var(--border);
-  color: var(--primary);
-  font-family: 'Fira Code', monospace;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: all 0.2s ease;
+  background: var(--surface);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.terminal-run-btn:hover {
-  background: var(--primary);
-  color: #ffffff;
-  border-color: var(--primary);
+.portrait-wrap:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
 }
 
-/* IDE Code Playground */
-.code-playground {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--glass-shadow);
-  font-family: "Fira Code", monospace;
-  font-size: 0.85rem;
+.portrait {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .code-header {
