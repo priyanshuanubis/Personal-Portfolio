@@ -254,6 +254,28 @@ h3 {
   background: var(--surface-soft);
 }
 
+/* Uniform Page Header Banner for Inner Pages */
+.page-header {
+  padding: 6.5rem 0 2.2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.2rem;
+}
+
+.page-header .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.page-header h1 {
+  margin: 0.2rem 0 0.8rem;
+}
+
+.page-header p {
+  color: var(--muted);
+  max-width: 65ch;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
 .menu-toggle {
   display: none;
   border: 1px solid var(--border);

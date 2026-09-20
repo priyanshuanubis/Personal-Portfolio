@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=90" />
+    <link rel="stylesheet" href="styles.css?v=100" />
   </head>
   <body>
     <header class="site-header">
@@ -41,13 +41,19 @@
     </header>
 
     <main id="main-content">
-      <section class="section container">
+      <!-- UNIFORM PAGE HEADER BANNER -->
+      <section class="page-header container">
+        <p class="eyebrow">Biography &amp; Background</p>
+        <h1>About <span class="gradient-text">Priyanshu Raj</span></h1>
+        <p>
+          Machine Learning Engineer, Computer Vision Systems Architect, and BS in Data Science student at Indian Institute of Technology Madras (IIT Madras).
+        </p>
+      </section>
+
+      <section class="section container" style="padding-top: 0;">
         <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 2.5rem; align-items: start;">
           <div>
-            <p class="eyebrow">Biography &amp; Background</p>
-            <h1>About <span class="gradient-text">Priyanshu Raj</span></h1>
-
-            <div class="status-row" style="margin: 1.2rem 0 1.6rem;">
+            <div class="status-row" style="margin-bottom: 1.6rem;">
               <span class="status-pill"><i class="bi bi-person-fill"></i> Male · Age 23</span>
               <span class="status-pill"><i class="bi bi-mortarboard-fill"></i> IIT Madras (BS Data Science)</span>
               <span class="status-pill"><i class="bi bi-geo-alt-fill"></i> India</span>
@@ -86,7 +92,7 @@
                 <span class="project-metrics">2025 - Present</span>
                 <h3>AWS Cloud &amp; Automated CI/CD Pipelines</h3>
                 <p style="color: var(--muted); font-size: 0.92rem; margin: 0.4rem 0 0;">
-                  Designed automated DevOps pipelines integrating Jenkins CI/CD, AWS cloud infrastructure, Docker containerization, and Flask web API backends.
+                  Designing automated DevOps pipelines integrating Jenkins CI/CD, AWS cloud infrastructure, Docker containerization, and Flask web API backends.
                 </p>
               </div>
             </div>
@@ -175,7 +181,7 @@
       </div>
     </footer>
 
-    <script src="script.js?v=90"></script>
-    <script src="chatbot.js?v=90"></script>
+    <script src="script.js?v=100"></script>
+    <script src="chatbot.js?v=100"></script>
   </body>
 </html>

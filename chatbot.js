@@ -235,15 +235,49 @@
     processQuery(query);
   }
 
-  function processQuery(userQuery) {
+  async function queryFreeAIModel(userQuery) {
+    const kbContent = rawText && rawText.trim().length > 50 ? rawText : defaultFallbackText;
+    const systemPrompt = `You are Priyanshu Raj's AI Portfolio Assistant. You strictly answer questions about Priyanshu Raj (his education at IIT Madras BS Data Science, age 23, male, certifications, PyTorch & OpenCV computer vision projects, AWS & Jenkins DevOps skills, experience, leadership, and contact details). Be professional, helpful, concise, and friendly. Use formatting like bold text and bullet points when appropriate. Answer based on this knowledge base background information:\n\n${kbContent}`;
+
+    try {
+      const response = await fetch("https://text.pollinations.ai/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userQuery }
+          ],
+          model: "openai"
+        })
+      });
+
+      if (response.ok) {
+        const reply = await response.text();
+        if (reply && reply.trim().length > 0) {
+          return reply.trim();
+        }
+      }
+    } catch (err) {
+      console.warn("Pollinations Free AI endpoint error, utilizing dynamic parser fallback:", err);
+    }
+
+    return generateDynamicAIResponse(userQuery);
+  }
+
+  async function processQuery(userQuery) {
     appendUserMessage(userQuery);
     showTypingIndicator();
 
-    setTimeout(() => {
+    try {
+      const aiResponse = await queryFreeAIModel(userQuery);
       removeTypingIndicator();
-      const botResponse = generateDynamicAIResponse(userQuery);
-      appendBotMessage(botResponse);
-    }, 400 + Math.random() * 300);
+      appendBotMessage(aiResponse);
+    } catch (e) {
+      removeTypingIndicator();
+      const fallbackResponse = generateDynamicAIResponse(userQuery);
+      appendBotMessage(fallbackResponse);
+    }
   }
 
   function appendUserMessage(text) {
