@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Ultra-Premium Obsidian Dark Theme (V2 Redesign) */
-  --bg: #06080d;
-  --bg-secondary: #0b0f19;
-  --surface: #0e1526;
-  --surface-glass: rgba(14, 21, 38, 0.92);
-  --surface-hover: #151e33;
-  --surface-soft: #141c2e;
+  /* High-Contrast Obsidian Dark Theme (Default) */
+  --bg: #07090e;
+  --bg-secondary: #0f172a;
+  --surface: #0f172a;
+  --surface-glass: rgba(15, 23, 42, 0.92);
+  --surface-hover: #1e293b;
+  --surface-soft: #162032;
   --text-heading: #ffffff;
   --text: #f8fafc;
   --muted: #94a3b8;
   --primary: #38bdf8;
   --primary-glow: rgba(56, 189, 248, 0.35);
   --secondary: #818cf8;
-  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 40%, #a855f7 75%, #ec4899 100%);
-  --accent-glow: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 70%);
-  --border: rgba(255, 255, 255, 0.12);
+  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
+  --accent-glow: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+  --border: rgba(255, 255, 255, 0.14);
   --border-hover: #38bdf8;
-  --header-bg: rgba(8, 12, 22, 0.92);
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  --glass-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-  --card-radius: 22px;
-  --tag-bg: #151e33;
+  --header-bg: rgba(11, 15, 25, 0.94);
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --card-radius: 20px;
+  --tag-bg: #1e293b;
   --tag-text: #f8fafc;
-  --tag-border: #26334d;
-  --flagship-bg: linear-gradient(135deg, #0e1526 0%, #151e33 60%, #1a253e 100%);
-  --code-bg: #0b0f19;
-  --code-header-bg: #141c2e;
+  --tag-border: #334155;
+  --flagship-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --code-bg: #0d1322;
+  --code-header-bg: #162035;
   --code-text: #f1f5f9;
   --code-title: #94a3b8;
 }
 
 [data-theme="light"] {
-  /* Crisp Modern Vibrant Light Theme */
-  --bg: #f5f7fc;
+  /* High-Contrast Crisp Vibrant Light Theme */
+  --bg: #f4f6fc;
   --bg-secondary: #e2e8f0;
   --surface: #ffffff;
   --surface-glass: rgba(255, 255, 255, 0.94);
@@ -118,12 +118,12 @@ img, svg, canvas, video {
   width: 0;
   height: 3px;
   background: var(--accent-gradient);
-  z-index: 1000;
+  z-index: 100;
   box-shadow: 0 0 12px var(--primary);
 }
 
 .container {
-  width: min(1180px, 92%);
+  width: min(1160px, 92%);
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -135,10 +135,10 @@ img, svg, canvas, video {
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  width: min(1140px, 94%);
+  width: min(1120px, 94%);
   z-index: 500;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   background: var(--header-bg);
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -649,7 +649,7 @@ h2 {
 }
 
 /* ==========================================================================
-   UNIFORM CARDS & BENTO GRID SYSTEM (V2 Redesign)
+   UNIFORM CARDS & GRID SYSTEM (Fixes uneven boxes across all pages)
    ========================================================================== */
 
 .project-grid,
@@ -689,7 +689,7 @@ h2 {
 .extra-item:hover {
   transform: translateY(-4px);
   border-color: var(--border-hover);
-  box-shadow: var(--shadow), 0 0 25px var(--primary-glow);
+  box-shadow: var(--shadow);
 }
 
 .project-card h3 {

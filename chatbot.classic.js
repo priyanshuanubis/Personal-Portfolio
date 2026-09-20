@@ -1,7 +1,7 @@
 /**
  * Priyanshu AI Assistant - Dynamic Knowledge Base Chatbot Engine
  * Reads priyanshu_knowledge_base.txt dynamically at runtime.
- * ALL ANSWERS ARE DERIVED DIRECTLY FROM THE KNOWLEDGE BASE DOCUMENT.
+ * NO HARDCODED PROFILE TEXT - ALL ANSWERS ARE DERIVED DIRECTLY FROM THE TEXT FILE.
  */
 
 (function () {
@@ -10,6 +10,7 @@
   let parsedFacts = {};
   let parsedSections = [];
 
+  // Default fallback text if network fetch fails initially
   const defaultFallbackText = `
 1. PERSONAL DETAILS & BIOGRAPHICAL INFO
 - Full Name: Priyanshu Raj
@@ -71,7 +72,7 @@
           </div>
           <div class="chatbot-info">
             <h4>Priyanshu AI</h4>
-            <span>Online · AI Assistant</span>
+            <span>Online · Dynamic Knowledge Base Active</span>
           </div>
         </div>
         <div class="chatbot-controls">
@@ -111,9 +112,9 @@
     `;
     document.body.appendChild(windowEl);
 
-    // Welcome Message (Clean Public Tone)
+    // Welcome Message
     appendBotMessage(
-      `👋 **Hello! I am Priyanshu's AI Assistant.**\n\nI can answer questions about **Priyanshu Raj** (his education at **IIT Madras**, certifications, computer vision & DevOps projects, skills, experience, extracurriculars, and contact details).\n\nHow can I help you today?`
+      `👋 **Hello! I am Priyanshu's AI Assistant.**\n\nI am dynamically linked to Priyanshu's knowledge base text document ([priyanshu_knowledge_base.txt](file:///d:/Project/Personal-Portfolio/priyanshu_knowledge_base.txt)). Any updates to his details will be read directly from the document.\n\nWhat would you like to know about Priyanshu today?`
     );
 
     // Listeners
@@ -145,6 +146,7 @@
       const line = lines[i].trim();
       if (!line || line.startsWith("===") || line.startsWith("---") || line.startsWith("Note:")) continue;
 
+      // Extract Fact Key-Values e.g. "- Key: Value" or "* Key: Value"
       const factMatch = line.match(/^[-*]\s*([^:]+):\s*(.+)$/);
       if (factMatch) {
         const key = factMatch[1].trim().toLowerCase();
@@ -152,6 +154,7 @@
         parsedFacts[key] = value;
       }
 
+      // Check section headers e.g. "1. PERSONAL DETAILS", "2. ACADEMICS", etc.
       if (/^\d+\.\s+[A-Z\s&]+/.test(line)) {
         if (currentSection.lines.length > 0) {
           currentSection.content = currentSection.lines.join("\n");
@@ -184,6 +187,7 @@
         if (res.ok) {
           const txt = await res.text();
           parseKnowledgeBase(txt);
+          console.log("Priyanshu AI: Successfully loaded & parsed priyanshu_knowledge_base.txt from " + path);
           return;
         }
       } catch (e) {
@@ -191,6 +195,7 @@
       }
     }
 
+    // Fallback if fetch fails
     parseKnowledgeBase(defaultFallbackText);
   }
 
@@ -295,10 +300,12 @@
 
   // -------------------------------------------------------------
   // 4. DYNAMIC KNOWLEDGE BASE SEARCH & RESPONSE GENERATOR
+  // NO HARDCODED PROFILE TEXT - ALL DATA EXTRACTED LIVE FROM RAW TEXT
   // -------------------------------------------------------------
   function generateDynamicAIResponse(query) {
     const q = query.toLowerCase().trim();
 
+    // 1. In-Scope Validation Check
     const inScopeTerms = [
       "priyanshu", "raj", "who", "about", "bio", "age", "old", "gender", "male", "female",
       "education", "academics", "iit", "madras", "degree", "bs", "data science", "college",
@@ -314,23 +321,25 @@
     const isRelated = inScopeTerms.some((term) => q.includes(term));
 
     if (!isRelated) {
-      return `⚠️ **Out of Scope Query**\n\nI am Priyanshu's AI Assistant created strictly to answer questions about **Priyanshu Raj** (his background, education at IIT Madras, certifications, projects, skills, experience, extracurriculars, and contact details).\n\nPlease ask a question related to Priyanshu!`;
+      return `⚠️ **Out of Scope Query**\n\nI am Priyanshu's AI Assistant created strictly to answer questions about **Priyanshu Raj** based on his knowledge base document ([priyanshu_knowledge_base.txt](file:///d:/Project/Personal-Portfolio/priyanshu_knowledge_base.txt)).\n\nPlease ask a question related to Priyanshu!`;
     }
 
+    // 2. Greetings
     if (/^(hi|hello|hey|greetings|hola|namaste)/i.test(q)) {
       const name = parsedFacts["full name"] || "Priyanshu Raj";
       const title = parsedFacts["title"] || "Software Engineer & AI Builder";
-      return `Hello! How can I assist you today regarding **${name}** (${title})?`;
+      return `Hello! I am the AI Assistant for **${name}** (${title}).\n\nHow can I help you today with details from his knowledge base?`;
     }
 
+    // 3. Direct Fact Lookup (e.g. "age", "gender", "email", "phone", "degree", "title", "location")
     if (q.includes("age") || q.includes("how old")) {
       const age = parsedFacts["age"] || extractFactFromText(rawText, "Age");
-      if (age) return `👤 Priyanshu Raj is **${age}**.`;
+      if (age) return `👤 According to Priyanshu's Knowledge Base, his age is **${age}**.`;
     }
 
     if (q.includes("gender") || q.includes("sex")) {
       const gender = parsedFacts["gender"] || extractFactFromText(rawText, "Gender");
-      if (gender) return `👤 Priyanshu Raj's gender is **${gender}**.`;
+      if (gender) return `👤 According to Priyanshu's Knowledge Base, his gender is **${gender}**.`;
     }
 
     if (q.includes("email") || q.includes("mail") || q.includes("contact") || q.includes("phone") || q.includes("mobile") || q.includes("reach") || q.includes("linkedin") || q.includes("github")) {
@@ -340,63 +349,91 @@
       const github = parsedFacts["github profile"] || "https://github.com/priyanshuanubis";
       const insta = parsedFacts["instagram profile"] || "";
 
-      return `📬 **Contact Priyanshu Raj:**\n\n` +
+      return `📬 **Contact Information (Extracted Live from Knowledge Base):**\n\n` +
         `• **Email:** [${email}](mailto:${email})\n` +
         `• **Mobile Phone:** [${phone}](tel:${phone})\n` +
-        `• **LinkedIn:** [LinkedIn Profile](${linkedin})\n` +
-        `• **GitHub:** [GitHub Profile](${github})\n` +
-        (insta ? `• **Instagram:** [Instagram Profile](${insta})\n` : "") +
+        `• **LinkedIn:** [Priyanshu Raj on LinkedIn](${linkedin})\n` +
+        `• **GitHub:** [priyanshuanubis on GitHub](${github})\n` +
+        (insta ? `• **Instagram:** [priyanshuanubis](${insta})\n` : "") +
         `\nPriyanshu is open to Software Engineering, Computer Vision, and DevOps opportunities!`;
     }
 
-    const sectionMatch = findMatchingSection(q, parsedSections);
-    if (sectionMatch) return sectionMatch;
+    // 4. Dynamic Section Matching (Certifications, Education, Projects, Skills, Extracurriculars, Work)
+    const sectionMatch = findMatchingSection(q, parsedSections, rawText);
+    if (sectionMatch) {
+      return sectionMatch;
+    }
 
+    // 5. Semantic Sentence Matching across all lines of rawText
     const lineMatches = findMatchingLines(q, rawText);
-    if (lineMatches) return `📄 **Details regarding Priyanshu Raj:**\n\n${lineMatches}`;
+    if (lineMatches) {
+      return `📄 **Details from Priyanshu's Knowledge Base Document:**\n\n${lineMatches}`;
+    }
 
+    // Fallback response built from live facts
     const name = parsedFacts["full name"] || "Priyanshu Raj";
     const status = parsedFacts["current status"] || "BS Data Science Student @ IIT Madras";
     return `👤 **${name}**\n\n${status}\n\nAsk me about his **age**, **academics**, **certifications**, **projects**, **skills**, **extracurriculars**, or **contact info**!`;
   }
 
+  // -------------------------------------------------------------
+  // HELPER KNOWLEDGE BASE SEARCH & EXTRACTORS
+  // -------------------------------------------------------------
   function extractFactFromText(text, label) {
     const regex = new RegExp(`[-*]\\s*${label}:\\s*(.+)`, "i");
     const m = text.match(regex);
     return m ? m[1].trim() : null;
   }
 
-  function findMatchingSection(query, sections) {
+  function findMatchingSection(query, sections, text) {
     const q = query.toLowerCase();
 
+    // Certifications
     if (q.includes("cert") || q.includes("credential")) {
       const certSec = sections.find((s) => s.title.toLowerCase().includes("certification"));
-      if (certSec) return `🏆 **${certSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(certSec.content)}`;
+      if (certSec) {
+        return `🏆 **${certSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(certSec.content)}`;
+      }
     }
 
+    // Education & Academics
     if (q.includes("education") || q.includes("academic") || q.includes("iit") || q.includes("madras") || q.includes("degree") || q.includes("study") || q.includes("college")) {
       const eduSec = sections.find((s) => s.title.toLowerCase().includes("academic") || s.title.toLowerCase().includes("education"));
-      if (eduSec) return `🎓 **${eduSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(eduSec.content)}`;
+      if (eduSec) {
+        return `🎓 **${eduSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(eduSec.content)}`;
+      }
     }
 
+    // Extracurriculars
     if (q.includes("extracurricular") || q.includes("leadership") || q.includes("activity") || q.includes("hackathon")) {
       const extraSec = sections.find((s) => s.title.toLowerCase().includes("extracurricular"));
-      if (extraSec) return `⚽ **${extraSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(extraSec.content)}`;
+      if (extraSec) {
+        return `⚽ **${extraSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(extraSec.content)}`;
+      }
     }
 
+    // Projects
     if (q.includes("project") || q.includes("repo") || q.includes("cicd") || q.includes("handguard") || q.includes("traffic") || q.includes("parking") || q.includes("log")) {
       const projSec = sections.find((s) => s.title.toLowerCase().includes("project"));
-      if (projSec) return `🚀 **${projSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(projSec.content)}`;
+      if (projSec) {
+        return `🚀 **${projSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(projSec.content)}`;
+      }
     }
 
+    // Skills
     if (q.includes("skill") || q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("python") || q.includes("pytorch")) {
       const skillSec = sections.find((s) => s.title.toLowerCase().includes("skill") || s.title.toLowerCase().includes("toolkit"));
-      if (skillSec) return `💻 **${skillSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(skillSec.content)}`;
+      if (skillSec) {
+        return `💻 **${skillSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(skillSec.content)}`;
+      }
     }
 
+    // Work Experience
     if (q.includes("experience") || q.includes("work") || q.includes("domain")) {
       const workSec = sections.find((s) => s.title.toLowerCase().includes("work") || s.title.toLowerCase().includes("domain"));
-      if (workSec) return `💼 **${workSec.title.replace(/^[\d.-]+\s*/, "")}:**\n\n${formatBullets(workSec.content)}`;
+      if (workSec) {
+        return `💼 **${workSec.title.replace(/^[\d.-]+\s*/, "")} (Live from Document):**\n\n${formatBullets(workSec.content)}`;
+      }
     }
 
     return null;
@@ -416,10 +453,14 @@
 
       const lowerLine = cleanLine.toLowerCase();
       let score = 0;
+
       for (let word of words) {
         if (lowerLine.includes(word)) score += 1;
       }
-      if (score > 0) scoredLines.push({ line: cleanLine, score });
+
+      if (score > 0) {
+        scoredLines.push({ line: cleanLine, score });
+      }
     }
 
     if (scoredLines.length === 0) return null;
@@ -444,12 +485,14 @@
 
   function formatMarkdown(text) {
     let formatted = escapeHTML(text);
+
     formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     formatted = formatted.replace(
       /\[(.*?)\]\((.*?)\)/g,
       '<a href="$2" target="_blank" rel="noopener noreferrer">$1 <i class="bi bi-box-arrow-up-right" style="font-size: 0.78em;"></i></a>'
     );
     formatted = formatted.replace(/\n/g, "<br>");
+
     return formatted;
   }
 
