@@ -6,12 +6,15 @@ for the website AI Chatbot ("Priyanshu AI"). Any updates made to this text docum
 will be automatically read by the chatbot.
 
 --------------------------------------------------------------------------------
-1. PERSONAL DETAILS & CONTACT INFORMATION
+1. PERSONAL DETAILS & BIOGRAPHICAL INFO
 --------------------------------------------------------------------------------
 - Full Name: Priyanshu Raj
 - Preferred Name: Priyanshu
+- Age: 23 Years Old
+- Gender: Male
 - Title: Software Engineer, Computer Vision Engineer & AI Builder
 - Current Status: Open to Software Engineering, Computer Vision, and DevOps Roles
+- Location: India
 - Email: priyanshuanubis33@gmail.com
 - Mobile Phone: +91 9990206348
 - LinkedIn Profile: https://linkedin.com/in/priyanshu-raj-05633831b
@@ -34,7 +37,39 @@ will be automatically read by the chatbot.
   * Systems & Software Engineering Principles
 
 --------------------------------------------------------------------------------
-3. WORK EXPERIENCE & PROFESSIONAL DOMAINS
+3. CERTIFICATIONS & PROFESSIONAL CREDENTIALS
+--------------------------------------------------------------------------------
+1. IIT Madras Data Science & Applications Credentials
+   - Issuer: Indian Institute of Technology Madras
+   - Level: Foundational & Diploma Level Modules
+   - Skills: Machine Learning, Deep Learning, SQL, Python, and Software Architecture.
+
+2. Computer Vision & PyTorch Certification
+   - Issuer: Deep Learning Specialization
+   - Skills: Convolutional Neural Networks (CNNs), HOG feature extractions, multi-modal neural networks, and OpenCV video stream processing.
+
+3. AWS Cloud Infrastructure & Jenkins Automation Certification
+   - Issuer: DevOps & Cloud Engineering
+   - Skills: Automated CI/CD deployment pipelines linking GitHub Actions, Jenkins, and AWS EC2/S3 cloud services.
+
+4. Applied Machine Learning & Data Science Certification
+   - Issuer: Data Science Toolkit
+   - Skills: Scikit-Learn, Pandas, NumPy, Support Vector Machines (SVM), decision trees, and regression modeling.
+
+--------------------------------------------------------------------------------
+4. EXTRACURRICULAR EXPERIENCE & LEADERSHIP
+--------------------------------------------------------------------------------
+- Tech Hackathons & Open Source Leadership:
+  * Active contributor and team lead in open-source developer communities building autonomous AI tools and computer vision prototypes.
+- Hardware & Edge IoT Tinkering:
+  * Hands-on experimentation with Raspberry Pi, microcontrollers, and edge compute modules for embedded computer vision and real-time perimeter protection.
+- Competitive Problem Solving:
+  * Active problem solver in C++ and Python across algorithmic coding platforms.
+- Research Reading & Tech Blogging:
+  * Reads research preprints (arXiv) on computer vision models, transformer multi-head attention, and Cloud/DevOps infrastructure.
+
+--------------------------------------------------------------------------------
+5. WORK EXPERIENCE & PROFESSIONAL DOMAINS
 --------------------------------------------------------------------------------
 - AI & Computer Vision Systems (2024 - Present):
   * Engineering real-time computer vision models using PyTorch, OpenCV, and NumPy.
@@ -56,50 +91,42 @@ will be automatically read by the chatbot.
   * Backend: Python Flask, RESTful APIs, SQLite, Role-based Access Control (RBAC).
 
 --------------------------------------------------------------------------------
-4. FEATURED PROJECTS & REPOSITORIES (8 REPOSITORIES)
+6. FEATURED PROJECTS & REPOSITORIES (8 REPOSITORIES)
 --------------------------------------------------------------------------------
 1. Automated CI/CD Deployment Pipeline (Flagship Project)
-   - Description: An end-to-end continuous integration and deployment pipeline linking GitHub, Jenkins, and AWS cloud infrastructure for automated testing, artifact creation, and zero-downtime server deployment.
-   - Tech Stack: AWS, Jenkins, GitHub Actions, DevOps, Shell Scripting.
-   - GitHub Link: https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline
+   - Tech: AWS, Jenkins, GitHub Actions, DevOps, Shell Scripting.
+   - Link: https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline
 
 2. HandGuardCV
-   - Description: Real-time virtual boundary protection and workspace perimeter safety system engineered using classical computer vision algorithms and hand tracking in Python & OpenCV.
-   - Tech Stack: Python, OpenCV, Computer Vision, NumPy.
-   - GitHub Link: https://github.com/priyanshuanubis/HandGuardCV
+   - Tech: Python, OpenCV, Computer Vision, NumPy.
+   - Link: https://github.com/priyanshuanubis/HandGuardCV
 
 3. Traffic Sign Recognition Benchmark
-   - Description: Classification pipeline evaluating PyTorch Deep Convolutional Neural Networks (CNNs) against HOG feature extractions and Support Vector Machine (SVM) baselines using the German Traffic Sign Recognition Benchmark (GTSRB).
-   - Tech Stack: PyTorch, CNN, OpenCV, HOG + SVM, Python.
-   - GitHub Link: https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark
+   - Tech: PyTorch, CNN, OpenCV, HOG + SVM, Python.
+   - Link: https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark
 
 4. Distributed Log Monitoring System
-   - Description: Distributed system architecture for real-time log generation, secure remote transfer, centralized log aggregation, and automated incident alerting.
-   - Tech Stack: JavaScript, Node.js, Bash Scripting, System Logging.
-   - GitHub Link: https://github.com/priyanshuanubis/log-monitoring-system
+   - Tech: JavaScript, Node.js, Bash Scripting, System Logging.
+   - Link: https://github.com/priyanshuanubis/log-monitoring-system
 
 5. Lightweight Multi-Modal Driver Distraction Detection System
-   - Description: Lightweight, multi-modal neural network architecture designed for real-time driver monitoring and distraction detection under edge compute constraints.
-   - Tech Stack: PyTorch, Deep Learning, Computer Vision, Multi-Modal Networks.
-   - GitHub Link: https://github.com/priyanshuanubis/Lightweight-Multi-Modal-Driver-Distraction-Detection-System
+   - Tech: PyTorch, Deep Learning, Computer Vision, Multi-Modal Networks.
+   - Link: https://github.com/priyanshuanubis/Lightweight-Multi-Modal-Driver-Distraction-Detection-System
 
 6. Placement Portal App
-   - Description: Full-stack campus placement management application featuring role-based authentication, student application tracking, company job postings, and RESTful APIs.
-   - Tech Stack: JavaScript, Vue.js, Python Flask, SQLite, REST APIs.
-   - GitHub Link: https://github.com/priyanshuanubis/Placement-Portal-App
+   - Tech: JavaScript, Vue.js, Python Flask, SQLite, REST APIs.
+   - Link: https://github.com/priyanshuanubis/Placement-Portal-App
 
 7. Pneumonia Detection CNN
-   - Description: Convolutional Neural Network (CNN) model trained for automated diagnosis and binary classification of pneumonia from chest X-ray medical imaging.
-   - Tech Stack: TensorFlow, Keras, CNN, Medical Imaging.
-   - GitHub Link: https://github.com/priyanshuanubis/pneumonia-detection-cnn
+   - Tech: TensorFlow, Keras, CNN, Medical Imaging.
+   - Link: https://github.com/priyanshuanubis/pneumonia-detection-cnn
 
 8. Vehicle Parking App
-   - Description: Parking management application streamlining slot tracking, vehicle entry and exit handling, real-time status updates, and operational analytics.
-   - Tech Stack: Python, Flask, SQLite, Bootstrap / CSS.
-   - GitHub Link: https://github.com/priyanshuanubis/Vehicle-Parking-App
+   - Tech: Python, Flask, SQLite, Bootstrap / CSS.
+   - Link: https://github.com/priyanshuanubis/Vehicle-Parking-App
 
 --------------------------------------------------------------------------------
-5. TECHNICAL SKILLS & TOOLKIT
+7. TECHNICAL SKILLS & TOOLKIT
 --------------------------------------------------------------------------------
 - Programming Languages: Python, C++, Java, JavaScript (ES6+), TypeScript, SQL, Rust, Bash Scripting.
 - Computer Vision & AI: PyTorch, OpenCV, Convolutional Neural Networks (CNNs), HOG Features, Multi-Modal Neural Networks, TensorFlow, Keras.
@@ -109,22 +136,9 @@ will be automatically read by the chatbot.
 - Machine Learning & Data Science: Support Vector Machines (SVM), Linear & Logistic Regression, Decision Trees, Naive Bayes, Scikit-learn, Pandas, NumPy.
 
 --------------------------------------------------------------------------------
-6. HOBBIES, PERSONAL INTERESTS & ATTRIBUTES
---------------------------------------------------------------------------------
-- Autonomous AI Systems Research: Enthusiastic about designing edge AI models, real-time computer vision applications, and autonomous agents.
-- Open Source & Project Building: Passionate about crafting well-documented open-source software and developer tooling on GitHub.
-- Competitive Problem Solving: Enjoy solving algorithmic puzzles, logic challenges, and optimizing code performance in C++ and Python.
-- Tech Blogging & Paper Reading: Regularly reads research preprints (arXiv) on computer vision, multimodal transformers, and Cloud/DevOps architectures.
-- Hardware & IoT Tinkering: Enjoys experimenting with edge computing devices (Raspberry Pi, NVIDIA Jetson, microcontroller modules) for computer vision experiments.
-- Gaming & Tech Community: Gamer who enjoys strategy and simulation games, active participant in tech communities, hackathons, and developer forums.
-- Learning Mindset: Passionate about continuous improvement, taking on challenging engineering problems, and staying ahead of modern AI developments.
-
---------------------------------------------------------------------------------
-7. CHATBOT DIRECTIVES & STRICT REFUSAL POLICY
+8. CHATBOT DIRECTIVES & STRICT REFUSAL POLICY
 --------------------------------------------------------------------------------
 - Bot Identity: Priyanshu's AI Assistant ("Priyanshu AI").
-- Primary Scope: The chatbot MUST strictly answer questions about Priyanshu Raj's academics, background, projects, skills, work experience, contact channels, and hobbies based on this knowledge base document.
-- Refusal Behavior: If a user asks a question that is NOT related to Priyanshu Raj (such as general knowledge trivia, general math, writing random code homework, cooking recipes, current news, etc.), the chatbot MUST refuse politely.
-- Standard Refusal Response: 
-  "I am Priyanshu's AI Assistant created strictly to answer questions about Priyanshu Raj (his education at IIT Madras, technical projects, skills, experience, hobbies, and contact details). Please ask a question related to Priyanshu!"
+- Primary Scope: Strictly answer questions about Priyanshu Raj (age 20, male, IIT Madras BS Data Science, certifications, extracurricular leadership, projects, skills, experience, contact).
+- Refusal Rule: Reject non-Priyanshu queries politely with the brand refusal message.
 ================================================================================

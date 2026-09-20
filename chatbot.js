@@ -1,5 +1,5 @@
 /**
- * Priyanshu AI Assistant - Dynamic Knowledge Base Chatbot
+ * Priyanshu AI Assistant - Enterprise Dynamic Knowledge Base Chatbot Widget
  * Strictly answers questions about Priyanshu Raj based on priyanshu_knowledge_base.txt
  */
 
@@ -14,11 +14,11 @@
   function injectChatbotUI() {
     if (document.getElementById("chatbot-fab")) return;
 
-    // Create FAB Trigger Button
+    // Create Floating Launcher FAB Button
     const fab = document.createElement("button");
     fab.id = "chatbot-fab";
     fab.className = "chatbot-fab";
-    fab.setAttribute("aria-label", "Open Priyanshu AI Chatbot");
+    fab.setAttribute("aria-label", "Open Priyanshu AI Assistant");
     fab.innerHTML = `
       <div class="chatbot-fab-icon">
         <i class="bi bi-robot" aria-hidden="true"></i>
@@ -28,7 +28,7 @@
     `;
     document.body.appendChild(fab);
 
-    // Create Chatbot Drawer Window
+    // Create Chatbot Popup Dropdown Drawer
     const windowEl = document.createElement("div");
     windowEl.id = "chatbot-window";
     windowEl.className = "chatbot-window";
@@ -57,10 +57,11 @@
       <div class="chatbot-messages" id="chatbot-messages"></div>
 
       <div class="chatbot-chips">
-        <button class="chip-btn" data-query="Tell me about Priyanshu's education">🎓 Education</button>
+        <button class="chip-btn" data-query="Tell me about Priyanshu's education and age">🎓 Education & Age</button>
+        <button class="chip-btn" data-query="What certifications does Priyanshu have?">🏆 Certifications</button>
         <button class="chip-btn" data-query="What are Priyanshu's top projects?">🚀 Projects</button>
-        <button class="chip-btn" data-query="What skills and technologies does Priyanshu know?">💻 Tech Stack</button>
-        <button class="chip-btn" data-query="What are Priyanshu's hobbies and interests?">⚽ Hobbies</button>
+        <button class="chip-btn" data-query="What skills and technologies does he know?">💻 Tech Stack</button>
+        <button class="chip-btn" data-query="What extracurricular experience does he have?">⚽ Extracurriculars</button>
         <button class="chip-btn" data-query="How can I contact Priyanshu?">📬 Contact</button>
       </div>
 
@@ -82,7 +83,7 @@
 
     // Initial Welcome Message
     appendBotMessage(
-      `👋 **Hello! I am Priyanshu's AI Assistant.**\n\nI can strictly answer questions about **Priyanshu Raj**—his education at **IIT Madras**, projects, technical skills, experience, hobbies, and contact details.\n\nHow can I help you today?`
+      `👋 **Hello! I am Priyanshu's AI Assistant.**\n\nI strictly answer questions about **Priyanshu Raj** (his education at **IIT Madras**, age 20, certifications, projects, skills, experience, extracurriculars, and contact info).\n\nHow can I help you today?`
     );
 
     // Event Listeners
@@ -141,7 +142,6 @@
     windowEl.setAttribute("aria-hidden", "false");
     document.getElementById("chatbot-input").focus();
 
-    // Re-fetch knowledge base to ensure latest updates are active
     loadKnowledgeBase();
   }
 
@@ -158,7 +158,7 @@
     msgContainer.innerHTML = "";
     chatHistory = [];
     appendBotMessage(
-      `Chat history cleared. Feel free to ask any question about Priyanshu Raj's academics, projects, skills, experience, or hobbies!`
+      `Chat history cleared. Ask me any question about Priyanshu Raj's academics, age, gender, certifications, projects, skills, experience, or extracurriculars!`
     );
   }
 
@@ -183,7 +183,7 @@
       removeTypingIndicator();
       const botResponse = generateAIResponse(userQuery);
       appendBotMessage(botResponse);
-    }, 600 + Math.random() * 400);
+    }, 450 + Math.random() * 300);
   }
 
   function appendUserMessage(text) {
@@ -242,33 +242,62 @@
   function generateAIResponse(query) {
     const q = query.toLowerCase().trim();
 
-    // 1. Check if Query is In-Scope for Priyanshu Raj
+    // In-Scope Keywords for Priyanshu Raj
     const inScopeKeywords = [
-      "priyanshu", "raj", "who", "about", "bio", "education", "academics", "iit", "madras",
-      "degree", "bs", "data science", "college", "study", "graduate", "grad", "school",
-      "project", "projects", "repo", "github", "cicd", "pipeline", "handguard", "traffic",
-      "gtsrb", "distraction", "driver", "log", "logging", "pneumonia", "xray", "parking",
-      "placement", "portal", "skill", "skills", "tech", "stack", "python", "c++", "java",
-      "javascript", "typescript", "rust", "bash", "pytorch", "opencv", "aws", "jenkins",
-      "devops", "cloud", "docker", "flask", "vue", "sql", "sqlite", "cnn", "hobbies", "hobby",
-      "interest", "interests", "game", "gaming", "tinkering", "iot", "blog", "paper", "experience",
-      "work", "contact", "email", "phone", "mobile", "gmail", "linkedin", "instagram", "hire",
-      "connect", "reach", "status", "hi", "hello", "hey", "help", "who are you"
+      "priyanshu", "raj", "who", "about", "bio", "age", "old", "gender", "male", "education",
+      "academics", "iit", "madras", "degree", "bs", "data science", "college", "study",
+      "graduate", "grad", "cert", "certs", "certification", "certifications", "credential",
+      "credentials", "extracurricular", "extracurriculars", "leadership", "project", "projects",
+      "repo", "github", "cicd", "pipeline", "handguard", "traffic", "gtsrb", "distraction",
+      "driver", "log", "logging", "pneumonia", "xray", "parking", "placement", "portal",
+      "skill", "skills", "tech", "stack", "python", "c++", "java", "javascript", "typescript",
+      "rust", "bash", "pytorch", "opencv", "aws", "jenkins", "devops", "cloud", "docker",
+      "flask", "vue", "sql", "sqlite", "cnn", "hobbies", "hobby", "interest", "interests",
+      "game", "gaming", "tinkering", "iot", "blog", "paper", "experience", "work", "contact",
+      "email", "phone", "mobile", "gmail", "linkedin", "instagram", "hire", "connect", "reach",
+      "status", "hi", "hello", "hey", "help", "who is he", "how old"
     ];
 
     const isRelated = inScopeKeywords.some((kw) => q.includes(kw));
 
     // Refusal Policy for Out-of-Scope Queries
     if (!isRelated) {
-      return `⚠️ **Out of Scope Query**\n\nI am Priyanshu's AI Assistant created strictly to answer questions about **Priyanshu Raj** (his education at IIT Madras, technical projects, skills, experience, hobbies, and contact details).\n\nPlease ask a question related to Priyanshu!`;
+      return `⚠️ **Out of Scope Query**\n\nI am Priyanshu's AI Assistant created strictly to answer questions about **Priyanshu Raj** (his age, gender, education at IIT Madras, certifications, projects, skills, experience, extracurriculars, and contact details).\n\nPlease ask a question related to Priyanshu!`;
     }
 
-    // 2. Greetings
+    // Greetings
     if (/^(hi|hello|hey|greetings|hola|namaste)/i.test(q)) {
-      return `Hello! How can I assist you today regarding **Priyanshu Raj's** background, IIT Madras academics, computer vision & DevOps projects, technical skills, or hobbies?`;
+      return `Hello! How can I assist you today regarding **Priyanshu Raj's** background, IIT Madras academics, certifications, computer vision & DevOps projects, technical skills, or hobbies?`;
     }
 
-    // 3. Contact Details
+    // Age & Gender
+    if (q.includes("age") || q.includes("old") || q.includes("gender") || q.includes("born") || q.includes("how old")) {
+      return `👤 **Biographical Info for Priyanshu Raj:**\n\n` +
+        `• **Age:** 20 Years Old\n` +
+        `• **Gender:** Male\n` +
+        `• **Current Status:** BS in Data Science Student @ **IIT Madras** (2024-2027)\n` +
+        `• **Career Goals:** Open to Software Engineering, Computer Vision, and DevOps Roles!`;
+    }
+
+    // Certifications & Credentials
+    if (q.includes("cert") || q.includes("credential") || q.includes("qualification")) {
+      return `🏆 **Priyanshu's Certifications & Credentials:**\n\n` +
+        `1. **IIT Madras Data Science & Applications Credentials** – Foundational & Diploma level modules covering Machine Learning, Deep Learning, SQL, and Software Engineering.\n` +
+        `2. **Computer Vision & PyTorch Certification** – CNN architectures, object classification, HOG features, and OpenCV video processing.\n` +
+        `3. **AWS Cloud Infrastructure & Jenkins Automation** – Continuous integration & deployment pipelines linking GitHub, Jenkins, and AWS EC2/S3.\n` +
+        `4. **Applied Machine Learning & Statistical Modeling** – Scikit-Learn, Pandas, NumPy, Support Vector Machines (SVM), and System Logging.`;
+    }
+
+    // Extracurricular Experience & Leadership
+    if (q.includes("extracurricular") || q.includes("leadership") || q.includes("activity") || q.includes("activities") || q.includes("hackathon")) {
+      return `⚽ **Extracurricular Experience & Leadership:**\n\n` +
+        `• **Tech Hackathons & Open Source:** Active contributor and project lead in developer communities building autonomous AI tools and computer vision prototypes.\n` +
+        `• **Hardware & Edge IoT Tinkering:** Hands-on experimentation with Raspberry Pi and edge compute modules for real-time safety monitoring.\n` +
+        `• **Competitive Problem Solving:** Regular algorithmic coding in C++ and Python.\n` +
+        `• **Research Reading:** Following research preprints (arXiv) on computer vision and transformer models.`;
+    }
+
+    // Contact Details
     if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("mobile") || q.includes("gmail") || q.includes("linkedin") || q.includes("reach") || q.includes("hire")) {
       return `📬 **Contact Priyanshu Raj:**\n\n` +
         `• **Email:** [priyanshuanubis33@gmail.com](mailto:priyanshuanubis33@gmail.com)\n` +
@@ -276,46 +305,25 @@
         `• **LinkedIn:** [priyanshu-raj-05633831b](https://linkedin.com/in/priyanshu-raj-05633831b)\n` +
         `• **GitHub:** [priyanshuanubis](https://github.com/priyanshuanubis)\n` +
         `• **Instagram:** [@priyanshuanubis](https://www.instagram.com/priyanshuanubis?igsh=MTlmbnZ1bDB3cDIzNg==)\n\n` +
-        `Priyanshu is open to **Software Engineering, Computer Vision, and DevOps** opportunities!`;
+        `Priyanshu is open to **Software Engineering, Computer Vision, and DevOps** roles!`;
     }
 
-    // 4. Education & Academics
+    // Education & Academics
     if (q.includes("education") || q.includes("academic") || q.includes("iit") || q.includes("madras") || q.includes("degree") || q.includes("bs") || q.includes("college") || q.includes("study")) {
       return `🎓 **Academics & Education:**\n\n` +
         `• **Degree:** Bachelor of Science (BS) in Data Science & Applications\n` +
         `• **Institution:** **IIT Madras** (Indian Institute of Technology Madras)\n` +
         `• **Timeline:** 2024 - Present (Expected Graduation: **2027**)\n\n` +
-        `**Key Focus Areas:** Machine Learning algorithms, Computer Vision, Statistical Data Analysis, Deep Learning, SQL Databases, and Software Engineering foundations.`;
+        `**Key Topics:** Machine Learning algorithms, Computer Vision, Statistical Data Analysis, Deep Learning, SQL Databases, and Software Engineering foundations.`;
     }
 
-    // 5. Projects
+    // Projects
     if (q.includes("project") || q.includes("repo") || q.includes("build") || q.includes("portfolio")) {
       if (q.includes("cicd") || q.includes("pipeline") || q.includes("flagship") || q.includes("devops")) {
         return `⭐ **Flagship Project: Automated CI/CD Deployment Pipeline**\n\n` +
           `An end-to-end continuous integration & deployment pipeline linking GitHub, Jenkins, and AWS cloud infrastructure for automated testing, artifact creation, and zero-downtime server deployments.\n\n` +
           `• **Tech:** AWS, Jenkins, GitHub Actions, DevOps, Shell Scripting\n` +
           `• **Repo:** [GitHub Repository](https://github.com/priyanshuanubis/Automated-CI-CD-Pipeline)`;
-      }
-
-      if (q.includes("handguard") || q.includes("vision")) {
-        return `🛡️ **HandGuardCV Project**\n\n` +
-          `Real-time virtual boundary protection and workspace perimeter safety system engineered using classical computer vision algorithms and hand tracking in Python & OpenCV.\n\n` +
-          `• **Tech:** Python, OpenCV, Computer Vision, NumPy\n` +
-          `• **Repo:** [GitHub Repository](https://github.com/priyanshuanubis/HandGuardCV)`;
-      }
-
-      if (q.includes("traffic") || q.includes("sign") || q.includes("gtsrb")) {
-        return `🚦 **Traffic Sign Recognition Benchmark**\n\n` +
-          `Classification pipeline evaluating PyTorch Deep CNNs against HOG feature extractions and SVM baselines using the German Traffic Sign Recognition Benchmark dataset.\n\n` +
-          `• **Tech:** PyTorch, CNN, OpenCV, HOG + SVM, Python\n` +
-          `• **Repo:** [GitHub Repository](https://github.com/priyanshuanubis/traffic-sign-recognition-benchmark)`;
-      }
-
-      if (q.includes("log") || q.includes("monitoring")) {
-        return `📊 **Distributed Log Monitoring System**\n\n` +
-          `Distributed system architecture for real-time log generation, secure remote transfer, centralized log aggregation, and automated incident alerting.\n\n` +
-          `• **Tech:** JavaScript, Node.js, Bash Scripting, System Logging\n` +
-          `• **Repo:** [GitHub Repository](https://github.com/priyanshuanubis/log-monitoring-system)`;
       }
 
       return `🚀 **Priyanshu's Top Projects (8 Repositories):**\n\n` +
@@ -330,7 +338,7 @@
         `Explore all projects on Priyanshu's [GitHub Profile](https://github.com/priyanshuanubis)!`;
     }
 
-    // 6. Technical Skills
+    // Technical Skills
     if (q.includes("skill") || q.includes("tech") || q.includes("stack") || q.includes("language") || q.includes("tool") || q.includes("python") || q.includes("pytorch")) {
       return `💻 **Priyanshu's Technical Toolkit:**\n\n` +
         `• **Languages:** Python, C++, Java, JavaScript (ES6+), TypeScript, SQL, Rust, Bash Scripting\n` +
@@ -340,39 +348,19 @@
         `• **Web & Databases:** Vue.js, Flask, RESTful APIs, HTML5/CSS3, SQLite`;
     }
 
-    // 7. Experience & Focus Areas
-    if (q.includes("experience") || q.includes("work") || q.includes("domain") || q.includes("role")) {
-      return `💼 **Professional Domains & Focus Areas:**\n\n` +
-        `• **AI & Computer Vision:** Real-time deep neural networks, image classification, perimeter protection, edge detection models.\n` +
-        `• **Cloud Infrastructure & DevOps:** Building CI/CD deployment pipelines on AWS with Jenkins and GitHub Actions.\n` +
-        `• **Distributed Systems:** Log generation, remote shipping, monitoring, and automated incident response.\n` +
-        `• **Full-Stack Engineering:** Scalable Web APIs, Vue.js frontends, and Flask backends.`;
-    }
-
-    // 8. Hobbies & Interests
-    if (q.includes("hobby") || q.includes("hobbies") || q.includes("interest") || q.includes("passions") || q.includes("game") || q.includes("free time") || q.includes("tinkering")) {
-      return `⚽ **Hobbies & Personal Interests:**\n\n` +
-        `• **Autonomous AI Research:** Designing edge AI models, computer vision systems, and autonomous agents.\n` +
-        `• **Open Source Building:** Crafting open-source software and tools on GitHub.\n` +
-        `• **Competitive Problem Solving:** Algorithmic challenges and performance optimization in C++ & Python.\n` +
-        `• **Tech Reading:** Following preprints (arXiv) on CV and transformer architectures.\n` +
-        `• **Hardware & IoT Tinkering:** Experimenting with Raspberry Pi & edge compute devices.\n` +
-        `• **Gaming & Community:** Playing strategy games and participating in developer hackathons.`;
-    }
-
-    // 9. Bio / Overview
+    // Bio / Overview
     if (q.includes("who") || q.includes("about") || q.includes("priyanshu")) {
       return `👤 **About Priyanshu Raj:**\n\n` +
-        `Priyanshu Raj is a **Software Engineer, Computer Vision Developer, and Data Science student at IIT Madras**.\n\n` +
+        `Priyanshu Raj (Age 20, Male) is a **Software Engineer, Computer Vision Developer, and Data Science student at IIT Madras**.\n\n` +
         `He specializes in PyTorch deep learning, OpenCV computer vision, AWS & Jenkins automated DevOps deployment pipelines, and full-stack software development. Currently open to Software Engineering and AI roles!`;
     }
 
-    // 10. Dynamic Fallback Search inside knowledgeBaseRaw
+    // Dynamic Fallback Search inside knowledgeBaseRaw
     if (isLoaded && knowledgeBaseRaw) {
       const lines = knowledgeBaseRaw.split("\n");
       const matchedLines = lines.filter((line) => {
         const lineLower = line.toLowerCase();
-        const keywords = q.split(" ").filter((w) => w.length > 3);
+        const keywords = q.split(" ").filter((w) => w.length > 2);
         return keywords.some((kw) => lineLower.includes(kw));
       });
 
@@ -382,8 +370,7 @@
       }
     }
 
-    // Default Fallback
-    return `Priyanshu Raj is a BS Data Science student at IIT Madras specializing in Computer Vision (PyTorch/OpenCV), Cloud DevOps (AWS/Jenkins), and Full-Stack development. Ask me about his **projects**, **skills**, **academics**, **hobbies**, or **contact info**!`;
+    return `Priyanshu Raj (Age 20, Male) is a BS Data Science student at IIT Madras specializing in Computer Vision (PyTorch/OpenCV), Cloud DevOps (AWS/Jenkins), and Full-Stack development. Ask me about his **age**, **education**, **certifications**, **projects**, **skills**, or **extracurriculars**!`;
   }
 
   // -------------------------------------------------------------
@@ -399,16 +386,11 @@
   function formatMarkdown(text) {
     let formatted = escapeHTML(text);
 
-    // Bold text **text**
     formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-
-    // Markdown Links [text](url)
     formatted = formatted.replace(
       /\[(.*?)\]\((.*?)\)/g,
       '<a href="$2" target="_blank" rel="noopener noreferrer">$1 <i class="bi bi-box-arrow-up-right" style="font-size: 0.78em;"></i></a>'
     );
-
-    // Newlines to <br>
     formatted = formatted.replace(/\n/g, "<br>");
 
     return formatted;
