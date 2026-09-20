@@ -51,7 +51,7 @@
     fab.setAttribute("aria-label", "Open Priyanshu AI Assistant");
     fab.innerHTML = `
       <div class="chatbot-fab-icon">
-        <i class="bi bi-robot" aria-hidden="true"></i>
+        <i class="bi bi-chat-left-text-fill" aria-hidden="true"></i>
         <span class="chatbot-status-dot"></span>
       </div>
       <span class="chatbot-fab-text">Ask Priyanshu AI</span>
